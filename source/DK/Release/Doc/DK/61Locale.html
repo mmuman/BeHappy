@@ -1,0 +1,30 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!topic><!DK>
+<h1 align="center">Localisation</h1><hr>
+<a name="Where is it"><h2>Where is it</h2></a>
+<p>BeHappy's localisation system is very simple. The localisation information is contained in the <b>BeHappy.loc</b> file for the BeHappy application, and in the different <b>*.loc</b> files for the add-ons. If you want to add a localisation system to your add-on, you'll have to create a localisation file. The file name must be the same than the add-on, with a <b>.loc</b> at the end.
+<hr>
+<a name=".loc syntax"><h2>.loc syntax</h2></a>
+<p>First a line beginning with a '#' will be ignored. You can use this to put somme commentaries. Then come the languages list. The add-on's "native" language should come first, and be between a '<b>[</b>' and a '<b>]</b>'. Each language should be put on a different line. As an example:</p>
+<p><tt>
+[English]<br>
+Fran&ccedil;ais<br>
+Deutch
+</tt></p>
+<p>Then you can put the translations. First put the string to translate, bewteen a '<b>[</b>' and a '<b>]</b>', and then put the translated strings. Each string should be put on a different line. The languages used must be in the same order than the one used previously. As an example:</p>
+<p><tt>
+[Spawn new window]<br>
+Cr&eacute;er une nouvelle fen&ecirc;tre<br>
+Neues Fenster &ouml;ffnen<br>
+</tt></p>
+<hr>
+<a name="What to translate"><h2>What to translate</h2></a>
+You can translate any string you want, except the index names. These are automaticly translated by BeHappy, if they are found in the <b>.loc</b> file.
+<br>
+<br>
+<center>Next: <a href="41Sample.html">Sample Add-on</a></center><hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

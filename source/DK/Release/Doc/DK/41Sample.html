@@ -1,0 +1,371 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!topic><!DK>
+<h1 align="center">Sample Code</h1><hr>
+<a name="Introduction"><h2>Introduction</h2></a>
+<p>Here is the code I wrote for the BeHappy Documentation add-on. I hope everything is explained enough. If there's something you don't understand, please <a href="mailto:behappy@becoz.org">send me an email</a>.
+
+<p><hr>
+<a name="Class Declaration"><h2>Class Declaration</h2></a>
+<tt>
+/*<br>
+* BeHappy Documentation Add-on <br>
+*<br>
+* (c) 1999 Sylvain Tertois<br>
+*<br>
+*/<br>
+<br>
+#ifndef ADDON_H<br>
+#define ADDON_H<br>
+<br>
+#include "HTMLProject.h"<br>
+<br>
+class AddOn : public HTMLProject<br>
+{<br>
+public:<br>
+&nbsp;&nbsp;AddOn(BMessage*);<br>
+&nbsp;&nbsp;AddOn();<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;void Update(HappyLink*);<br>
+&nbsp;&nbsp;const unsigned int *GiveConfig() const;<br>
+&nbsp;&nbsp;bool FindHome();<br>
+<br>
+&nbsp;&nbsp;void About() const;<br>
+<br>
+private:<br>
+&nbsp;&nbsp;void NewFile(HTMLFile *file, HappyLink *list);<br>
+&nbsp;&nbsp;unsigned int CountHTMLFiles(BDirectory &dir);<br>
+<br>
+&nbsp;&nbsp;HappyLink *classes,*topics;<br>
+};<br>
+<br>
+#endif //ADDON_H<br>
+</tt>
+<hr>I just add two functions to the base Add-On:
+<ul><li><tt>NewFile</tt> parses the given <tt>file</tt> and puts all the found links and labels as children of the given <tt>list</tt>
+<li><tt>CountHTMLFiles</tt> returns the number of html files in the given directory <tt>dir</tt>. (This function if recursive. So if there's a directory inside <tt>dir</tt> that contains html files, they will be counted as well).
+</ul>
+<p>The <tt>classes</tt> and <tt>topics</tt> are the indexes used with the development kit documentation.
+
+<p><hr>
+<a name="Add-On.cpp"><h2>Add-On.cpp</h2></a>
+
+<tt>
+/*<br>
+* BeHappy Documentation Add-on <br>
+*<br>
+* (c) 1999 Sylvain Tertois<br>
+*<br>
+*/<br>
+<br>
+#include "Add-On.h"<br>
+#include "HappyLink.h"<br>
+#include "HTMLFile.h"<br>
+#include "BHAdd-ons.h"<br>
+#include <Alert.h><br>
+<br>
+// don't touch these!<br>
+// these two variables are used by BeHappy to be sure it's compatible with the add-on<br>
+const uint16 BHVersion = BHAO_VERSION;<br>
+const uint16 BHVLastCompatible = BHAO_LCVERSION;<br>
+<br>
+<br>
+HTMLProject *<a name="InstantiateProject()">InstantiateProject(BMessage *archive)</a><br>
+{<br>
+&nbsp;&nbsp;if (archive==NULL)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return new AddOn;<br>
+&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return new AddOn(archive);<br>
+}<br>
+
+<hr></tt>
+You shouldn't need to change <tt>InstantiateProject</tt>. All it does is construct and return a new <tt>Add-On</tt> object.
+<hr><tt>
+
+<br>
+// Put Add-On name here<br>
+const char *<a name="projectName">projectName</a>="BeHappy Documentation";<br>
+<br>
+<a name="AddOn::AddOn()">AddOn::AddOn(BMessage *archive)</a><br>
+&nbsp;&nbsp;: HTMLProject(archive)<br>
+{<br>
+}<br>
+
+<hr></tt>
+Note that I don't initialise the member variables in the constructor. I will in the <tt>Update()</tt> function.
+<hr><tt>
+
+<br>
+AddOn::AddOn()<br>
+{<br>
+}<br>
+<br>
+// Give the configuration of the different indexes<br>
+const unsigned int *<a name="AddOn::GiveConfig() const">AddOn::GiveConfig() const</a><br>
+{<br>
+&nbsp;&nbsp;static unsigned int config[] = { 0,BW_SECONDLIST,BW_SECONDLIST };<br>
+&nbsp;&nbsp;return(config);<br>
+}<br>
+
+<hr></tt>
+The first index (Summary) will be one list, and the other two (Classes and Topics) will be two lists.
+<hr><tt>
+
+<br>
+// Put here the code to find the documentation path<br>
+// if you return false, a window will be opened asking for the path<br>
+bool <a name="AddOn::FindHome()">AddOn::FindHome()</a><br>
+{<br>
+&nbsp;&nbsp;// first try to find the "BeHappyDK" folder<br>
+&nbsp;&nbsp;BQuery myQuery;<br>
+&nbsp;&nbsp;BVolumeRoster roster;<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;/// get the boot volume<br>
+&nbsp;&nbsp;BVolume vol;<br>
+&nbsp;&nbsp;roster.GetBootVolume(&vol);<br>
+&nbsp;&nbsp;myQuery.SetVolume(&vol);<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;/// sets and launch the Query<br>
+&nbsp;&nbsp;myQuery.SetPredicate("name=BeHappyDK");<br>
+&nbsp;&nbsp;myQuery.Fetch();<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;/// and look what we've found<br>
+&nbsp;&nbsp;BEntry myEntry;<br>
+&nbsp;&nbsp;while(myQuery.GetNextEntry(&myEntry) == B_OK)<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//// if it isn't a directory, give up<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (!myEntry.IsDirectory())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//// try to build a BDirectory object to see if the Doc folder is here<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BDirectory myDir(&myEntry);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (myDir.SetTo(&myDir,"Doc") == B_OK)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//// if the init is OK, we've found it!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetHome(myDir);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}&nbsp;&nbsp;<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// it seems that the BeHappyDK folder isn't here...<br>
+&nbsp;&nbsp;// look for BeHappy's folder<br>
+&nbsp;&nbsp;entry_ref beHappyRef;<br>
+&nbsp;&nbsp;BRoster appRoster;<br>
+&nbsp;&nbsp;if (appRoster.FindApp("application/x.vnd-STertois.BeHappy",&beHappyRef) == B_OK)<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/// find BeHappy's directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BDirectory happyDir;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BEntry beHappyApp(&beHappyRef);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;beHappyApp.GetParent(&happyDir);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/// and the documentation directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (happyDir.SetTo(&happyDir,"Doc") == B_OK)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//// if the init is OK, we've found it!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SetHome(happyDir);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;// not found... ask user<br>
+&nbsp;&nbsp;SetHome(BDirectory("/boot/home"));<br>
+&nbsp;&nbsp;return false;<br>
+}<br>
+<br>
+// The biggest part: put here your code to build the indexes<br>
+// don't use the HappyLink* (yet)<br>
+void <a name="AddOn::Update()">AddOn::Update(HappyLink*)</a><br>
+{<br>
+&nbsp;&nbsp;// first let's clean the old indexes if they're there<br>
+&nbsp;&nbsp;Clean();<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// now let's go!! put your code here<br>
+&nbsp;&nbsp;HTMLLabel *mainFile = new HTMLLabel(this,"index.html","","Index");<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// count the number of HTML files in the home directory, to tell the<br>
+&nbsp;&nbsp;// infowindow how many Print() calls it will get<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/// first get the path of the home directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BPath *homePath = GetPath("");<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/// and here we go<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BDirectory homeDir(homePath-&gt;Path());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NumPrint(CountHTMLFiles(homeDir));<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// create the happyList<br>
+&nbsp;&nbsp;happyList = new HappyLink(this,projectName,mainFile);<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// create the first index<br>
+&nbsp;&nbsp;HappyLink *index = new HappyLink(this,"Summary",mainFile);<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// maybe the two other indexes... we'll see later!!<br>
+&nbsp;&nbsp;classes = topics = NULL;<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// add the summary to the happy list:<br>
+&nbsp;&nbsp;happyList-&gt;AddChild(index);&nbsp;&nbsp;// this can be done before or after you fill in the index<br>
+<br>
+&nbsp;&nbsp;// and add the files!!<br>
+&nbsp;&nbsp;HTMLFile *theFile = mainFile-&gt;GetFile();<br>
+&nbsp;&nbsp;NewFile(theFile,index);<br>
+&nbsp;&nbsp;delete theFile;<br>
+}<br>
+<br>
+// Add all the labels and links of the given file into the given HappyLink<br>
+void <a name="AddOn::NewFile()">AddOn::NewFile(HTMLFile *file,HappyLink *list)</a><br>
+{<br>
+&nbsp;&nbsp;// Add the beacons... <br>
+&nbsp;&nbsp;/// All the html files have a &lt;!DK&gt; tag, to say what type of file it is<br>
+&nbsp;&nbsp;/// I add a beacon to get this information<br>
+&nbsp;&nbsp;HTMLBeacon *beaconDK = new HTMLBeacon("&lt;!DK&gt;&lt;!","&gt;&lt;!DK&gt;");<br>
+&nbsp;&nbsp;file-&gt;AddBeacon(beaconDK);<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;/// only the links between &lt;!start&gt; and &lt;!stop&gt; will be useful<br>
+&nbsp;&nbsp;file-&gt;AddBeacon(new HTMLBeacon("&lt;!start"));<br>
+&nbsp;&nbsp;file-&gt;AddBeacon(new HTMLBeacon("&lt;!stop"));<br>
+
+<hr></tt>
+Note that the beacons I used don't have the ending <tt>&gt;</tt>. If I put this character, the word after <tt>&lt;!start&gt;</tt> or <tt>&lt;!stop&gt;</tt> wouldn't be recognised, if it's a link or a label. It would be put in <tt>FoundString()</tt> instead of being stored as a link/label.
+<hr><tt>
+
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// Parse the file<br>
+&nbsp;&nbsp;file-&gt;Search();<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;if (!beaconDK-&gt;Found())<br>
+&nbsp;&nbsp;// the DK tags aren't there... too bad!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// get the labels and links found in the file<br>
+&nbsp;&nbsp;BList labels,links;<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;/// first the labels.. we want all of them<br>
+&nbsp;&nbsp;file-&gt;GetLists(0,4,NULL,&labels);<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;/// and the links... I only want those between &lt;!start&gt; and &lt;!stop&gt;<br>
+&nbsp;&nbsp;file-&gt;GetLists(2,3,&links,NULL);<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// Add all the labels to the summary<br>
+&nbsp;&nbsp;int n = labels.CountItems();<br>
+&nbsp;&nbsp;for (int i=0; i&lt;n; i++)<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HTMLLabel *theLabel = (HTMLLabel*)labels.ItemAt(i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list-&gt;AddChild(new HappyLink(this,theLabel-&gt;LabelText(),theLabel));<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// And the links<br>
+&nbsp;&nbsp;n = links.CountItems();<br>
+&nbsp;&nbsp;for (int i=0; i&lt;n; i++)<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HTMLLabel *theLink = (HTMLLabel*)links.ItemAt(i);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Update the information in the info window<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BString info = "Parsing:";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;info &lt;&lt; theLink-&gt;FileName();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Print(NULL,info.String());<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Add a link in the summary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HappyLink *child = new HappyLink(this,theLink-&gt;LabelText(),theLink);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list-&gt;AddChild(child);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// parse the new file, and add its links and labels to the summary, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;// as children of child.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HTMLFile *newFile = theLink-&gt;GetFile();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NewFile(newFile,child);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;delete newFile;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// find if the file is a development kit topic, or a class<br>
+
+<hr></tt>
+All the HTML files in the documentation have a special tag at the begining:
+<ul><li><tt>&lt;!DK&gt;&lt;!no&gt;&lt;!DK&gt;</tt> if the file is just a BeHappy documentation file
+<li><tt>&lt;!DK&gt;&lt;!class&gt;&lt;!DK&gt;</tt> if it is a development kit file, that sould be put in the Classes index.
+<li><tt>&lt;!DK&gt;&lt;!topic&gt;&lt;!DK&gt;</tt> if it is a development kit file, that sould be put in the Topics index.
+</ul>
+<hr><tt>
+
+&nbsp;&nbsp;BString dkType = beaconDK-&gt;FoundString();<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;if (dkType != "no")<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// This is a DK file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// is it the first one?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (classes == NULL)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// yes, create the other indexes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTMLLabel *mainFile = new HTMLLabel(this,"index.html","","Index");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classes = new HappyLink(this,"Classes",mainFile);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topics = new HappyLink(this,"Topics",mainFile);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// add the two indexes to the happyList<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;happyList-&gt;AddChild(classes);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;happyList-&gt;AddChild(topics);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// create a copy of the HappyLink<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HappyLink *copy = new HappyLink(*list);<br>
+
+<hr><tt>
+When you want to have the same happyLink in two different places <b>always make a copy</b>! If you just add <tt>list</tt> to one of the two indexes <b>Classes</b> or <b>Topics</b> you'll have a segmentation fault because it's already in the <b>Summary</b> index.
+<hr></tt>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// is it a class or a topic?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (dkType == "class")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classes-&gt;AddChild(copy);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// topic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topics-&gt;AddChild(copy);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;}<br>
+}<br>
+&nbsp;&nbsp;<br>
+<br>
+// About box<br>
+void <a name="AddOn::About() const">AddOn::About() const</a><br>
+{<br>
+&nbsp;&nbsp;BAlert *info = new BAlert("BeHappy:BeHappy Doc","BeHappy Documentation\nBy Sylvain Tertois","OK");<br>
+&nbsp;&nbsp;info-&gt;Go();<br>
+}<br>
+<br>
+// Count the HTML files in a directory<br>
+unsigned int <a name="AddOn::CountHTMLFiles()">AddOn::CountHTMLFiles(BDirectory &dir)</a><br>
+{<br>
+&nbsp;&nbsp;BEntry file;<br>
+&nbsp;&nbsp;unsigned int count = 0;<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;// loop in all the files in the directory<br>
+&nbsp;&nbsp;while (dir.GetNextEntry(&file,true) == B_OK)<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (file.IsDirectory())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// if it a directory, we'll have to look for html files in it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BDirectory newDir(&file);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count += CountHTMLFiles(newDir);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// find the MIME type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BNode myNode(&file);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BNodeInfo myNodeInfo(&myNode);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// is it an html file?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char mime[256];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myNodeInfo.GetType(mime);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (strcmp(mime,"text/html") == 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;return count;<br>
+}</tt>
+<br>
+<br>
+<center>Next: <a href="51Scripting.html">Scripting</a></center><hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

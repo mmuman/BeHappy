@@ -1,0 +1,60 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!topic><!DK>
+<h1 align="center">How does it work?</h1><hr>
+<a name="The HappyList"><h2>The HappyList</h2></a>
+<br>
+<table border=0><tr><td><img src="11hi1.gif"></td>
+<td>All the indexes are organised in a tree. As an example, here are some parts of the tree created by the BeBook add-on, on the left.
+<br>
+All the elements of the tree are called <b>HappyLink</b>s. Each HappyLink has a name, a link to an html file, and a few other things I'll describe later.
+<br>
+The first HappyLink of the list has the name of the documentation, and points to its main html file (usually index.html). This link has some children (here 'By Kit', 'By Inheritance', 'Functions Index' and 'Topics Index'), and each child will be interpreted as an index for BeHappy (ie they will be in the popup menu). They also point on the main html file.
+<br>The grandchildren (such as the different kits) and their offspring will be put in the lists BeHappy displays under the popup menu.
+</td></tr></table>
+<br>
+A HappyLink contains the following informations:
+<ul>
+<li><b>Name.</b>
+<li><b>Info</b> This string can contain more information about the item. To see how it can be used, look at the 'Functions Index' with the BeBook: When the mouse goes over a function, the class name appears underneath the list. That's the info string.
+<li><b>An html file</b> This is the html file the HappyLink is linked to
+<li><b>A html label</b> This is a label in the file html file. Labels are explained below.
+</ul>
+These last two elements (html file and label) are represented by an <b>HTMLLabel</b> object.
+<hr>
+<a name="Parsing an HTML file"><h2>Parsing an HTML file</h2></a>
+<br>
+You can write your own HTML parsing code, or you can use mine, through the <b>HTMLFile</b> class. Please note that this class was written with the BeBook in mind, and it isn't really adapted to any html documentation.
+<br>This class uses three different objects that can be found in an HTML file:
+<ul>
+<li><b>Links</b> A link is found in the <TT>&lt;A HREF=""&gt;</TT> tag. It contains the name of another HTML file and possibly a label name.
+<li><b>Labels</b> A label is found in the <TT>&lt;A NAME=""&gt;</TT> tag, and is used to put marks in the file. As an example, in the BeBook, an HTML file describes a complete class, and a label exists in the file for each function.
+<li><b>Beacons</b> These are user configurable strings to search in the HTML file. It can be used for two things:
+<ol>
+<li>Search for labels and/or links only between two beacons (in the BeHappy documentation, it is between the <TT>&lt;!start&gt;</TT> and <TT>&lt;!stop&gt;</TT> tags). That way, other links, such as links to my web page, or the 'Return to summary' links, won't be parsed.
+<li>Extract a specific information from the page. As an example, in the BeBook, I use a beacon with two strings, <TT>">Derived from:"</TT> and <TT>"&lt;P&gt;"</TT> to look from witch class a given class inherits, to build the 'By Inheritance' index. If BeHappy finds the beacon, it's possible to extract the string that's between the two given strings above. The extracted string is the name of the 'father' class.
+</ol>
+</ul>
+<hr>
+<a name="How the Add-on does an update"><h2>How the Add-on does an update</h2></a>
+Here is how an add-on should work to update BeHappy's index:
+<ol>
+<li>Find the HTML documentation (the directory and the index file name)
+<li>Create a HappyLink object, with the Add-on's name. This will be the head of the tree.
+<li>Create HappyLinks objects for each indexes the add-on wants to create (such as the four used by the BeBook)
+<li>Create an HTMLFile object to parse the index.html file.
+</ol>
+And this can be done to all the html files found:
+<ol>
+<li>Tell the HTMLFile what beacons we want it to find.
+<li>Call the Search() method to parse the file
+<li>Extract the labels and links found in the file, create some HappyLinks with those that seem interesting, and add the to the tree.
+<li>Find what extracted links look interesting, create an HTMLFile from them, and parse it again.
+</ol>
+<br>
+<br>
+<center>Next: <a href="21Tools.html">The Tools</a></center><hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

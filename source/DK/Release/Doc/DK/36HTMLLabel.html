@@ -1,0 +1,173 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!class><!DK>
+<a href="31Classes.html"><center>The Classes</center></a><hr>
+<a name="HTMLLabel"><h1>HTMLLabel</h1></a>
+<p>Derived from: none
+<p>Declared in: HTMLFile.h
+<p>HTMLLabel represents a label in an html file. Use them with <a href="34HTMLFile.html">HTMLFile</a>.
+
+<hr>
+
+<h2><font size=6>C</font>onstructor and <font size=6>D</font>estructor</h2>
+<p><h3><a name="HTMLLabel()">HTMLLabel()</a></h3>
+<i>Remark:</i> You shouldn't need to construct HTMLLabels yourself. The <a href="34HTMLFile.html">HTMLFile</a> will create them for you when it finds a label or a link, in its <a href="34HTMLFile.html#Search()">Search()</a> method.
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <FONT  color=000022 size=+1><b><tt>HTMLLabel(</tt></b></font><a href="32HTMLProject.html">HTMLProject</a> *<font  color=991122 face=HELVETICA><i>proj</i></font>, <tt>const char</tt> *<font  color=991122 face=HELVETICA><i>fileName</i></font>, <tt>const char</tt> *<font  color=991122 face=HELVETICA><i>labelName</i></font>, <tt>const char</tt> *<font  color=991122 face=HELVETICA><i>labelText</i></font>, <tt>unsigned int</tt> <font  color=991122 face=HELVETICA><i>beacon</i></font><tt>=0</tt><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+
+  <tr><td> 
+  <FONT  color=000022 size=+1><b><tt>HTMLLabel(</tt></b></font><tt>const</tt> <a href="36HTMLLabel.html">HTMLLabel</a>*<font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+</table></table>
+
+<p>Creates a new HTMLLabel. The first version creates a new label, with these parameters:
+<ul><li><font  color=991122 face=HELVETICA><i>proj</i></font> is the <a href="32HTMLProject.html">HTMLProject</a> the label is included into.
+<li><font  color=991122 face=HELVETICA><i>fileName</i></font> is the name of the file that contains the label, relative to <font  color=991122 face=HELVETICA><i>proj</i></font>'s home path.
+<li><font  color=991122 face=HELVETICA><i>labelName</i></font> is the name of the label, i.e. the italic string in one of these tags: <tt>&lt;a href="fileName#<i>labelName</i>"&gt;</tt> or <tt>&lt;a name="<i>labelName</i>"&gt;</tt>.
+<li><font  color=991122 face=HELVETICA><i>labelText</i></font>. This is the name of the label as seen by the user, i.e. the string between the <tt>&lt;a href="..."&gt;</tt> and <tt>&lt;/a&gt;</tt> tags, (or <tt>&lt;a name="..."&gt;</tt> and <tt>&lt;/a&gt;</tt> for a label)
+<li><font  color=991122 face=HELVETICA><i>beacon</i></font> is the number of the last found beacon before this label (<tt>0</tt> if no beacon was found before)
+</ul>
+<p>The second version is a copy constructor.
+
+<p><hr>
+<h3><a name="~HTMLLabel()">~HTMLLabel()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <FONT  color=000022 size=+1><b><tt>~HTMLLabel()</tt></b></font>
+  <p>
+
+</table></table>
+
+Destroys the <a href="36HTMLLabel.html">HTMLLabel</a> object.
+
+<p><hr>
+<h2><font size=6>M</font>ember <font size=6>F</font>unctions</h2>
+
+<p>
+<h3><a name="FileName()">FileName()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const char</tt> *<font  color=000022 size=+1><b><tt>FileName()</tt></b></font> <tt>const</tt> 
+  <p>
+</table></table>
+
+<p>Returns the name of the html file that has the label.
+<p>This string is owned by the <a href="36HTMLLabel.html">HTMLLabel</a>. Don't destroy it.
+
+<p><hr>
+<h3><a name="GetFile()">GetFile()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <a href="34HTMLFile.html">HTMLFile</a> *<font  color=000022 size=+1><b><tt>GetFile()</tt></b></font> <tt>const</tt> 
+  <p>
+</table></table>
+
+<p>Creates an <a href="34HTMLFile.html">HTMLFile</a> associated to the file that contains the link. You keep the responsability for this object. You must destroy it after use.
+
+<p><hr>
+<h3><a name="LabelName()">LabelName()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const char</tt> *<font  color=000022 size=+1><b><tt>LabelName()</tt></b></font> <tt>const</tt> 
+  <p>
+</table></table>
+
+<p>Returns the name of the label, i.e. the italic string in one of these tags: <tt>&lt;a href="fileName#<i>labelName</i>"&gt;</tt> or <tt>&lt;a name="<i>labelName</i>"&gt;</tt>.
+<p>This string is owned by the <a href="36HTMLLabel.html">HTMLLabel</a>. Don't destroy it.
+
+<p><hr>
+<h3><a name="LabelText()">LabelText()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const char</tt> *<font  color=000022 size=+1><b><tt>LabelText()</tt></b></font> <tt>const</tt> 
+  <p>
+</table></table>
+
+<p>Returns the label text. This is the name of the label as seen by the user, i.e. the string between the <tt>&lt;a href="..."&gt;</tt> and <tt>&lt;/a&gt;</tt> tags (or <tt>&lt;a name="..."&gt;</tt> and <tt>&lt;/a&gt;</tt> for a label).
+<p>This string is owned by the <a href="36HTMLLabel.html">HTMLLabel</a>. Don't destroy it.
+
+<p>
+<hr>
+<h2><font size=6>O</font>perators</h2>
+<p><h3><a name="!=">!=</a>, <a name="==">==</a> (comparaison)</h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>bool operator==</tt><font  color=000022 size=+1><b><tt>(</tt></b></font><tt>const <a href="36HTMLLabel.html">HTMLLabel</a><tt>&</tt><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+  <tt>bool operator!=</tt><font  color=000022 size=+1><b><tt>(</tt></b></font><tt>const <a href="36HTMLLabel.html">HTMLLabel</a><tt>&</tt><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+
+</table></table>
+
+Compares the two <a href="36HTMLLabel.html">HTMLLabel</a>s. <tt>==</tt> returns <tt>true</tt> if both <a href="36HTMLLabel.html">HTMLLabel</a> point to the same file, and have the same label.
+
+<hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

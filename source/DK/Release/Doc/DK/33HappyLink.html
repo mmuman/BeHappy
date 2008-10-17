@@ -1,0 +1,259 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!class><!DK>
+<a href="31Classes.html"><center>The Classes</center></a><hr>
+<a name="HappyLink"><h1>HappyLink</h1></a>
+<p>Derived from: none
+<p>Declared in: HappyLink.h
+<p>The HappyLink is the basic class to describe the indexes displayed by BeHappy. A HappyLink is made of two or three things:
+<ul><li>A <b>name</b>, displayed by BeHappy.
+<li>A <b>label</b>, which is a specific position in an HTML file:
+  <ol><li>A <b>file name</b>
+  <li>The <b>label name</b> in the file. The full name of the label will be <b>file name</b>#<b>label name</b>.
+  </ol>
+<li>An optional <b>info</b> string.
+</ul>
+<p>You can add children to a HappyLink object using the <a href="#AddChild()">AddChild()</a> method. The <a href="32HTMLProject.html#happyList">happyList</a> member of an <a href="HTMLProject.html">HTMLProject</a> is the top HappyLink. It's name is the name of the add-on, and its children are the different indexes used by BeHappy.
+<hr>
+
+<h2><font size=6>C</font>onstructor and <font size=6>D</font>estructor</h2>
+<p><h3><a name="HappyLink()">HappyLink()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <font  color=000022 size=+1><b><tt>HappyLink()</tt></b></font> 
+  <p>
+
+  <tr><td> 
+  <FONT  color=000022 size=+1><b><tt>HappyLink(</tt></b></font><a href="32HTMLProject.html">HTMLProject</a> *<font  color=991122 face=HELVETICA><i>proj</i></font>, <tt>const char</tt> *<font  color=991122 face=HELVETICA><i>name</i></font>, <a href="36HTMLLabel.html">HTMLLabel</a> *<font  color=991122 face=HELVETICA><i>link</i></font>, <tt>const char</tt> *<font  color=991122 face=HELVETICA><i>info</i></font> <tt> = NULL</tt><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+
+  <tr><td>
+  <FONT  color=000022 size=+1><b><tt>HappyLink(</tt></b></font>BDataIO *<font  color=991122 face=HELVETICA><i>archive</i></font></tt><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+
+  <tr><td>
+  <FONT  color=000022 size=+1><b><tt>HappyLink(</tt></b></font><a href="33HappyLink.html">HappyLink</a> &<font  color=991122 face=HELVETICA><i>source</i></font></tt><font  color=000022 size=+1><b><tt>)</tt></b></font>
+
+  <p> 
+</table></table>
+
+Creates a new HappyLink. The usual constructor takes four parameters: 
+<ul><li><font  color=991122 face=HELVETICA><i>proj</i></font> is the <a href="32HTMLProject.html">HTMLProject</a> who creates the link. Usualy you create the link inside a HTMLProject::Update() method, so this parameter will be <tt>this</tt>.
+<li><font  color=991122 face=HELVETICA><i>name</i></font> is its name.
+<li><font  color=991122 face=HELVETICA><i>link</i></font> is the link (file name and label).
+<li><font  color=991122 face=HELVETICA><i>info</i></font> (optional) an info string, that can be displayed by BeHappy when the mouse pointer is over the link.
+</ul>
+<p>Another version extract these informations from a BDataIO object, an archive.
+<p>The last version is a copy constructor.
+
+<p><hr>
+<h3><a name="~HappyLink()">~HappyLink()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <font  color=000022 size=+1><b><tt>~HappyLink()</tt></b></font> 
+  <p>
+</table></table>
+
+Destroys the <a href="33HappyLink.html">HappyLink</a>, its brothers, and its children.
+
+<p><hr>
+<h2><font size=6>M</font>ember <font size=6>F</font>unctions</h2>
+
+<p>
+<h3><a name="AddChild()">AddChild()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>AddChild(</tt></b></font><a href="33HappyLink.html">HappyLink</a> *<font  color=991122 face=HELVETICA><i>newChild</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+</table></table>
+
+Adds a child to the HappyLink. If the HappyLink already has children, <font  color=991122 face=HELVETICA><i>newChild</i></font> will be added at the end. See also <a href="#AddChildSorted()">AddChildSorted()</a>
+
+<p><hr>
+<h3><a name="AddChildSorted()">AddChildSorted()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>AddChildSorted(</tt></b></font><a href="33HappyLink.html">HappyLink</a> *<font  color=991122 face=HELVETICA><i>newChild</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+</table></table>
+
+Same as <a href="#AddChild()">AddChild()</a>, exept that <font  color=991122 face=HELVETICA><i>newChild</i></font> will be added at the best place to keep an alphabetical order. If all the children are added with this method, they will be ordered.
+
+<p><hr>
+<h3><a name="Archive()">Archive()</a></h3> <i>You shouldn't have to use this</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>status_t </tt> <font  color=000022 size=+1><b><tt>Archive(</tt></b></font>BDataIO *<font  color=991122 face=HELVETICA><i>archive</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+</table></table>
+
+Archive all the contents of the HappyLink in the given <font  color=991122 face=HELVETICA><i>archive</i></font>. A HappyLink can be reconstructed from this <font  color=991122 face=HELVETICA><i>archive</i></font> using the third constructor. All the children are also archived, but not the brothers.
+
+<p><hr>
+<h3><a name="CountItems()">CountItems()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>unsigned int</tt> <font  color=000022 size=+1><b><tt>CountItems()</tt></b></font> 
+  <p>
+</table></table>
+
+Counts the number of brothers and children, including the current HappyLink.
+
+<p><hr>
+<h3><a name="Dump()">Dump()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>Dump()</tt></b></font> 
+  <p>
+</table></table>
+
+Prints to the standard output the name of the HappyLink, as well as those of its brothers and children.
+
+<p><hr>
+<h3><a name="Find()">Find()</a></h3> <i>You shouldn't have to use this</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  bool <font  color=000022 size=+1><b><tt>Find(</tt></b></font><a href="33HappyLink">HappyLink</a> **<font  color=991122 face=HELVETICA><i>father</i></font>, <a href="33HappyLink">HappyLink</a> **<font  color=991122 face=HELVETICA><i>son</i></font>, <tt>unsigned int</tt> <font  color=991122 face=HELVETICA><i>linkNum</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+</table></table>
+
+Finds a HappyLink among the current HappyLink's children. It searches for the link with the given number  <font  color=991122 face=HELVETICA><i>linkNum</i></font>. If the item is found, the function returns <tt>true</tt> and fill the two pointers <font  color=991122 face=HELVETICA><i>father</i></font> and <font  color=991122 face=HELVETICA><i>son</i></font> with the found HappyLink and its father. If the HappyLink isn't found, the function returns <tt>false</tt>.
+
+<p><hr>
+<h3><a name="RemoveChild()">RemoveChild()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>RemoveChild(</tt></b></font><a href="33HappyLink.html">HappyLink</a> *<font  color=991122 face=HELVETICA><i>child</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+</table></table>
+
+Remove <font  color=991122 face=HELVETICA><i>child</i></font> from the HappyLink's children. Returns <tt>true</tt> if <font  color=991122 face=HELVETICA><i>child</i></font> was successfully removed, and <tt>false</tt> if it wasn't found.
+
+<p><hr>
+<h3><a name="Search()">Search()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <a href="33HappyLink">HappyLink</a> *<font  color=000022 size=+1><b><tt>Search(</tt></b></font><tt>const</tt> BString &<font  color=991122 face=HELVETICA><i>nameToSearch</i></font>, <tt>unsigned int</tt> <font  color=991122 face=HELVETICA><i>generation</i></font><tt> = 1000</tt>, BList *<font  color=991122 face=HELVETICA><i>list</i></font> <tt>= NULL</tt><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+</table></table>
+
+Searches for a specific name among the HappyLink's children: <font  color=991122 face=HELVETICA><i>nameToSearch</i></font>. <font  color=991122 face=HELVETICA><i>generation</i></font> is the number of generations <a href="#Search()">Search()</a> is allowed to search. You can use this method in two different ways:
+<ul><li>If <font  color=991122 face=HELVETICA><i>list</i></font> is <tt>NULL</tt>, the function returns the first HappyLink it finds with the name <font  color=991122 face=HELVETICA><i>nameToSearch</i></font>. If none is found, it returns <tt>NULL</tt>.
+<li>If it isn't <tt>NULL</tt>, then the function will fill the supplied <font  color=991122 face=HELVETICA><i>list</i></font> with all the HappyLinks found with the <font  color=991122 face=HELVETICA><i>nameToSearch</i></font>. The function always return <tt>NULL</tt> in that case. If no HappyLink is found, the list stays empty.
+</ul>
+<p>See also <a href="#Find()">Find()</a>
+
+<p><hr>
+<h3><a name="UpdateLink()">UpdateLink()</a></h3> <i>You shouldn't have to use this</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>UpdateLink(</tt></b></font><a href="32HTMLProject.html">HTMLProject</a> *<font  color=991122 face=HELVETICA><i>proj</i></font>, <a href="36HTMLLabel.html">HTMLLabel</a> *<font  color=991122 face=HELVETICA><i>link</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p>
+</table></table>
+
+Changes the HappyLink's current HTML link, to <font  color=991122 face=HELVETICA><i>link</i></font> in the project <font  color=991122 face=HELVETICA><i>proj</i></font>.
+
+<hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

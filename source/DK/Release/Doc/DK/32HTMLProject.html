@@ -1,0 +1,424 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!class><!DK>
+<a href="31Classes.html"><center>The Classes</center></a><hr>
+<a name="HTMLProject"><h1>HTMLProject</h1></a>
+<p>Derived from: BArchivable
+<p>Declared in: HTMLProject.h
+<p>The HTMLProject class represents any BeHappy add-on, and includes all what's needed by BeHappy to communicate with it. Inherit from this class to do an add-on.
+<p>Some functions in this class are useful only for BeHappy, so you won't need to use them, but if you're curious, I also tell a few things about them. I've just put a warning message underneath their name: <i>You shouldn't need this</i>. I've also marked the virtual functions.
+<hr>
+<a name="Hook Functions"><h2><font size=6>H</font>ook <font size=6>F</font>unctions</h2></a>
+<p>
+<tt>
+<p><a href="#FindHome()">FindHome()</a>
+<p><a href="#About()">About()</a>
+<p><a href="#GiveConfig()">GiveConfig()</a>
+<p><a href="#Update()">Update()</a>
+<p><a href="#GiveSupportedAddOns()">GiveSupportedAddOns()</a> (not used yet)
+</tt><p><hr>
+
+<h2><font size=6>C</font>onstructor and <font size=6>D</font>estructor</h2>
+<p><h3><a name="HTMLProject()">HTMLProject()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <font  color=000022 size=+1><b><tt>HTMLProject()</tt></b></font> 
+  <p>
+
+  <tr><td> 
+  <FONT  color=000022 size=+1><b><tt>HTMLProject(</tt></b></font>BMessage *<font  color=991122 face=HELVETICA><i>archive</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font> 
+  <p> 
+</table></table>
+
+The constructor just creates a new project object. The first version creates an empty project (the <a href="#happyList">happyList</a> variable is set to NULL), and the second one rebuilds the happyList from the given <font  color=991122 face=HELVETICA><i>archive</i></font>.
+
+<p><hr>
+<h3><a name="~HTMLProject()">~HTMLProject()</a></h3>
+<p><i>Warning</i>: don't overload the HTMLProject destructor. As it isn't virtual, it would never be called by BeHappy.
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <font  color=000022 size=+1><b><tt>~HTMLProject()</tt></b></font> 
+  <p>
+</table></table>
+
+Frees all the memory allocated by the project, including the happy list.
+
+<p><hr>
+<h2><font size=6>S</font>tatic <font size=6>F</font>unctions</h2>
+
+<h3><a name="Instantiate()">Instantiate()</a></h3> see BArchivable::Instantiate().
+
+<p><hr>
+<h2><font size=6>M</font>ember <font size=6>F</font>unctions</h2>
+
+<p><hr>
+<h3><a name="About()">About()</a></h3> <i>virtual</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt> About()</tt></b></font> <tt>const</tt> 
+  <p>
+</table></table>
+
+Called by BeHappy when the user asks information about the add-on. Should display an 'About' window.
+
+<p><hr>
+<h3><a name="AddFile()">AddFile()</a></h3> <i>You shouldn't need this </i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>unsigned int</tt> <font  color=000022 size=+1><b><tt>AddFile(</tt></b></font> <tt>const char *<font  color=991122 face=HELVETICA><i>fname</i></font><tt>, int</tt> <font  color=991122 face=HELVETICA><i>guess</i></font><tt>=-1</tt><font  color=000022 size=+1><tt><b>)</tt></b></font> 
+  <p>
+</table></table>
+
+Adds a file name in the project file database. Returns the number of the file in this database. The HTMLLabels store the file number instead of the file name, for some obvious memory economy reasons. If the file is already stored in the database, this method simply returns its number. The search can be sped up with the <font  color=991122 face=HELVETICA><i>guess</i></font> parameter, if you know an approximate value.
+
+<p><hr>
+<h3><a name="AddLabel()">AddLabel()</a></h3> <i>You shouldn't need this </i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>unsigned int</tt> <font  color=000022 size=+1><b><tt>AddLabel(</tt></b></font> <tt>const </tt><a href="36HTMLLabel.html">HTMLLabel</a> *<font  color=991122 face=HELVETICA><i>label</i></font><font  color=000022 size=+1><tt><b>)</tt></b></font> 
+  <p>
+</table></table>
+
+Adds a label in the project label database, and returns the number of this label. (The number is used in the happylinks)
+
+<p><hr>
+<h3><a name="Archive()">Archive()</a></h3> see BArchivable::Archive()
+
+<p><hr>
+<h3><a name="Clean()">Clean()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>Clean()</tt></b></font> <tt>const</tt> 
+  <p>
+</table></table>
+
+Empties the <a href="#happyList">happyList</a>. (Called at the beginning of <a href="#Update()">Update()</a>.)
+
+<p><hr>
+<h3><a name="GetFile()">GetFile()</a></h3> <i>You shouldn't need this </i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <a href="34HTMLFile.html">HTMLFile</a> <font  color=000022 size=+1><b><tt>*GetFile(</tt></b></font> <tt>unsigned int <font  color=991122 face=HELVETICA><i>index</i></font> <font  color=000022 size=+1><tt><b>)</tt></b></font> 
+  <p>
+</table></table>
+
+This method returns the <a href="34HTMLFile.html">HTMLFile</a> object associated with the index <font  color=991122 face=HELVETICA><i>index</i></font>. 
+
+<p><hr>
+<h3><a name="GetPath()">GetPath()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>BPath</tt> <font  color=000022 size=+1><b><tt>*GetPath(</tt></b></font> <tt>const char *<font  color=991122 face=HELVETICA><i>fname</i></font> <font  color=000022 size=+1><tt><b>)</tt></b></font> 
+  <p>
+</table></table>
+
+Returns the path of the file specified by the relative name <font  color=991122 face=HELVETICA><i>fname</i></font>. See <a href="#SetHome()">SetHome()</a>.
+
+<p><hr>
+<h3><a name="GetFile()">GiveSupportedAddOns()</a></h3> <i>virtual - not used yet</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const char</tt> <font  color=000022 size=+1><b><tt>**GiveSupportedAddOns()</tt></b></font> 
+  <p>
+</table></table>
+
+Unused in this version
+
+<p><hr>
+<h3><a name="FindHome()">FindHome()</a></h3> <i>virtual</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>bool</tt> <font  color=000022 size=+1><b><tt>FindHome()
+  <p>
+</table></table>
+
+Called by BeHappy to find the home directory for the documentation. (Use the <a href="#SetHome()">SetHome()</a> function once you've found it). Returns <tt>true</tt> if the directory if found. If <a href="#FindHome()">FindHome()</a> returns <tt>false</tt>, BeHappy will open a window asking the user to enter the path manualy.
+<p>If <a href="#FindHome()">FindHome()</a> returns <tt>false</tt> but has called <a href="#SetHome()">SetHome()</a> before, BeHappy will display the given path in its window. The user can modify it, or just confirm it.
+
+<p><hr>
+<h3><a name="GiveConfig()">GiveConfig()</a></h3> <i>virtual</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const unsigned int</tt> <font  color=000022 size=+1><b><tt>*GiveConfig()</tt></b></font> <tt>const</tt>
+  <p>
+</table></table>
+
+Returns an array of <tt>unsigned int</tt> containing the configurations of the different indexes (double or simple lists, 'find' options etc...). The number of integers must be the same as (or at least greater than) the number of indexes. Have a look at the <a href="37Global.html#Index Types">constants</a> to know what defined constants you can use in this function. Each integer is associated with an index.
+
+<p><hr>
+<h3><a name="GiveName">GiveName()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  BString <font  color=000022 size=+1><b><tt>*GiveName(</tt></b></font> <tt>unsigned int <font  color=991122 face=HELVETICA><i>index</i></font> <font  color=000022 size=+1><tt><b>)</tt></b></font> 
+  <p>
+</table></table>
+
+Gives the full name of a label indentified by its index number <font  color=991122 face=HELVETICA><i>index</i></font>. A full label name is a string like 'FileName.html#LabelName'.
+
+<p><hr>
+<h3><a name="InitOK()">InitOK()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>bool</tt> <font  color=000022 size=+1><b><tt>InitOK()</tt></b></font> 
+  <p>
+</table></table>
+
+Returns <tt>true</tt> if the object initialisation was done correctly, or <tt>false</tt> if there has been an error.
+
+<p><hr>
+<h3><a name="NumPrint()">NumPrint()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>NumPrint(</tt></b></font><tt>unsigned int </tt> <font  color=991122 face=HELVETICA><i>n</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+</table></table>
+
+Tells BeHappy how much <a href="#Print()">Print()</a> calls there will be during the update. Only the <a href="#Print()">Print()</a>s for the second line will be counted.
+
+<p><hr>
+<h3><a name="Print()">Print()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>Print(</tt></b></font><tt>const char</tt> *<font  color=991122 face=HELVETICA><i>line1</i></font>,<tt>const char</tt> *<font  color=991122 face=HELVETICA><i>line2</i></font><tt> = NULL</tt><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+</table></table>
+
+Changes the information displayed during the update. If one of the parameters <font  color=991122 face=HELVETICA><i>line1</i></font> or <font  color=991122 face=HELVETICA><i>line2</i></font> is <tt>NULL</tt>, the corresponding line isn't changed. A <a href="#Print()">Print()</a> call with  <font  color=991122 face=HELVETICA><i>line2</i></font> different from <tt>NULL</tt> also makes the status bar progress. Use the <a href="#NumPrint()">NumPrint()</a> method to tell how much <a href="#Print()">Print()</a> call will be done to fill the status bar. If you only print on the first line (i.e. if <font  color=991122 face=HELVETICA><i>line2</i></font>=<tt>NULL</tt>), nothing will be done to the status bar.
+
+<p><hr>
+<h3><a name="SetHome()">SetHome()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>SetHome(</tt></b></font> <tt>const </tt>BDirectory &<font  color=991122 face=HELVETICA><i>dir</i></font><font  color=000022 size=+1><tt><b>)</tt></b></font> 
+  <p>
+</table></table>
+
+Set the new home directory to <font  color=991122 face=HELVETICA><i>dir</i></font>. All the file names used in the project will be relative to this directory. It should be set in the <a href="#FindHome()">FindHome()</a> method. If <a href="#FindHome()">FindHome()</a> returns <tt>false</tt>, BeHappy will set the home path itself. <a href="#SetHome()">SetHome()</a> <b><i>shouldn't</i></b> be called elsewhere.
+
+<p><hr>
+<h3><a name="SetInfoMessenger()">SetInfoMessenger()</a></h3> <i>You shouldn't use this</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>SetInfoMessenger(</tt></b></font>BMessenger &<font  color=991122 face=HELVETICA><i>mess</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+</table></table>
+
+Called by BeHappy to give a messenger to the window used to display information about the status of the update. Used by <a href="#Print()">Print()</a>.
+
+<p><hr>
+<h3><a name="Translate()">Translate()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const char</tt> <font  color=000022 size=+1><b><tt>*GetFile(</tt></b></font> <tt>const char *<font  color=991122 face=HELVETICA><i>string</i></font> <font  color=000022 size=+1><tt><b>)</tt></b></font><tt> const</tt>
+  <p>
+</table></table>
+
+This method translates the string given in argument. The language used is the one selected by the user in BeHappy. You should create a .loc file to use this functionnality. You can translate all the strings you want, except the index names, which are automaticly translated by BeHappy. See also <a href="61Locale.html">"Localisation"</a>.
+
+<p><hr>
+<h3><a name="Update()">Update()</a></h3> <i>virtual</i>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>void</tt> <font  color=000022 size=+1><b><tt>Update(</tt></b></font><a href="33HappyLink.html">HappyLink</a>*<font  color=000022 size=+1><tt><b>)</tt></b></font> 
+  <p>
+</table></table>
+
+This method is called when BeHappy wants to do an update of the index. It should empty the index (i.e. call <a href="#Clean()">Clean()</a>) and recreate it. For this use the <a href="#happyList">happyList</a> variable, wich must be created here.
+<p>The <a href="33HappyLink.html">HappyLink</a>* parameter isn't used in this version of BeHappy. Don't use it.
+
+<p><hr>
+<h2><font size=6>M</font>ember <font size=6>V</font>ariables</h2>
+
+<p><hr>
+<h3><a name="happyList">happyList</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <a href="33HappyLink.html">HappyLink</a> <font  color=000022 size=+1><b><tt>*happyList</tt></b></font> 
+  <p>
+</table></table>
+
+happyList is the head of the tree of <a href="33HappyLink.html">HappyLink</a>s. It's created in the <a href="#Update()">Update()</a> method. It should have the name of the add-on, and its children are the indexes used by BeHappy.<hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

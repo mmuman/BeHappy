@@ -1,0 +1,128 @@
+# BeHappy BeBook Add-on localisation file
+# see BeHappy.loc for the syntax
+
+# languages
+[English]
+Français
+Deutch
+Nederlands
+Português
+Magyar
+Japanese
+
+# Indexes
+[By Kit]
+Par Kit
+Nach Kit
+Op Kit
+Por Kit
+Kit alapján
+キット
+
+[Other]
+Autres
+Sonstiges
+Anders
+Outro
+Egyéb
+その他
+
+[By Inheritance]
+Par héritage
+Nach Abstammung
+op erfenis
+Por Herança
+Kapcsolatok alapján
+継承
+
+[Functions Index]
+Index des fonctions
+Funktionsindex
+Funktie Index
+Índice de Funções
+Funkció alapján
+索引:関数
+
+[Topics index]
+Index des sujets
+Themenindex
+Onderwerp Index
+Índice de Tópicos
+Cím alapján
+索引:話題
+
+# update strings
+[In:]
+Dans:
+In*:
+In:
+em:
+ln:
+In:
+
+[Parsing]
+Lecture de
+Verarbeite
+Verwerken
+Leitura de
+Értelmezés
+構文解析
+
+#about
+[BeBook add-on, version %x.%2.2x]
+Add-on pour le BeBook, version %x.%2.2x
+BeBook Modul Version %x.%2.2x
+BeBook add-on versie %x.%2.2x
+Add-On para o BeBook, versão %x.%2.2x
+BeBook add-on, %x.%2.2x verzió
+BeBook add-on, バージョン %x.%2.2x
+
+[by Sylvain Tertois]
+par Sylvain Tertois
+von Sylvain Tertois
+door Sylvain Tertois
+por Sylvain Tertois
+Sylvian Tertois-tól
+by Sylvain Tertois
+
+[Send email]
+Envoyer un email
+eMail schicken
+Stuur Email
+Enviar um Email
+E-mail küldés
+電子メールを送信
+
+[OK]
+OK
+OK
+OK
+Ok
+Ok
+はい
+
+#path selection
+[BeBook Path]
+# (window title)
+Chemin du BeBook
+BeBookPath*
+BeBook Lokatie
+Caminho do BeBook
+BeBook elérési út
+BeBookへのパス
+
+[Please Select the path to use for the Be Book:]
+Veuillez choisir le chemin à utiliser pour le Be Book:
+Please Select the path to use for the Be Book:*
+Selecteert u a.u.b. de lokatie voor het BeBook:
+Por favor, selecione o caminho para o uso do BeBook:
+Kérem a BeBook elérési útvonalát:
+BeBookのために使用するパスを選択してください:
+
+[Set Manually]
+Spécifier à la main
+Set Manually
+Handmatig instellen
+Especificar Manualmente
+Kézi beállítás
+手動で設定します

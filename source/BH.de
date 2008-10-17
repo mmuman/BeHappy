@@ -1,0 +1,16 @@
+<html><head><title>&Uuml;ber BeHappy</title></head>
+<body>
+<br>
+<h1 align="center">Willkommen zu</h1>
+<center><img src="BH.jpeg"></center><br>
+<h4 align="center">Version 1.06</h4>
+<br>
+<center>Programmiert von <a href="mailto:behappy@becoz.org">Sylvain Tertois</a><br>
+Dieses Programm ist Mailware! Wenn es Ihnen gef&auml;llt, schreiben Sie mir bitte eine Mail (auf Englisch oder Franz&ouml;sisch)!<br>
+Updates und Zusatzmodule k&ouml;nnen auf der <a href="http://www.becoz.org/beos/happy" target="_blank">BeHappy Internetseite</a> gefunden werden.<br>
+Um ein Buch zu &ouml;ffnen, w&auml;hlen Sie ein Modul aus dem "<b>Buch</b>"-Men&uuml;.
+<br>
+Dieses Programm verwendet <a href="Netpositive:About.html">NetPositive</a>, programmiert von Scott Barta, Peter Barrett, Hirochi Lockheimer, Trevor F. Smith, und Kenny Carruthers.<br>
+</center>
+</body>
+</html>

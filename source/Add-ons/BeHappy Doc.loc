@@ -1,0 +1,37 @@
+# BeHappy Documentation Add-on localisation file
+# see BeHappy.loc for the syntax
+
+# languages
+[English]
+Français
+Deutch
+Nederlands
+Português
+Magyar
+Japanese
+
+# Indexes
+[Summary]
+Sommaire
+Summary*
+Index
+Sumário
+Tartalom
+インデックス
+
+# for the development kit only
+[Classes]
+Classes
+Classes*
+Classes
+Classes
+Osztályok
+クラス
+
+[Topics]
+Sujets
+Topics*
+Onderwerpen
+Tópicos
+Címek
+話題

@@ -1,0 +1,110 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!topic><!DK>
+<h1 align="center">Protocol</h1><hr>
+To use the examples given in this page, you'll need Attila Mezei's <a href="http://w3.datanet.hu/~mezeia/" target="_blank">hey</a> tool. It is a very useful tool that can send scripting messages from the terminal. Just launch BeHappy, open a terminal, and type the commands given after the <tt>$</tt> character.
+
+<a name="The BeHappy Application"><h2>The BeHappy Application</h2></a>
+To find the application, use it's signature: application/x.vnd-STertois.BeHappy. The following code will construct a BMessenger that can be used to send messages to BeHappy:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BMessenger messenger("application/x.vnd-STertois.BeHappy");</tt>
+<br><br>
+But this code won't work if BeHappy isn't already running, so a better method is to use Launch to send a message:
+<br><br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be_roster->Launch("application/x.vnd-STertois.BeHappy",message);</tt>
+<br><br>As BeHappy doesn't allow multiple instances of itself, doing this when it's already running won't launch a new BeHappy, but send the message to the existing one.<br>
+If BeHappy is launched with a 'Hide' message, it doesn't open any window, and wait for messages:
+<br><br><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BMessage launch('Hide');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be_roster->Launch("application/x.vnd-STertois.BeHappy",&launch);<br>
+</tt><br>
+<hr>
+<a name="Opening a window"><h2>Opening a window</h2></a>
+To open a BeHappy window, you must send the 'Open' message. If the message is empty, a window with the last used book will be opened. But you can also open a perticular book by adding a B_STRING_TYPE field "Name" to the message. The string value must be the add-on name. The folowing code will launch BeHappy and open it's documentation:
+<br><br><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BMessage launch('Open');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;launch.AddString("Name","BeHappy Documentation");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be_roster->Launch("application/x.vnd-STertois.BeHappy",&message);<br>
+</tt><br>
+If BeHappy is already running, a window with the documentation will open.<br>
+If the book is found, a B_REPLY reply is given, with a "Messenger" field, giving the new window's messenger. If it isn't found, a B_MESSAGE_NOT_UNDERSTOOD reply is given. In that case, BeHappy won't quit by itself, even if you launched it with this message.<br>
+<hr>
+
+<a name="Add-on properties"><h2>The 'Add-on' properties</h2></a>
+The application has an 'Add-ons' property, that only recognise the B_DIRECT_SPECIFIER specifier, and the B_COUNT_PROPERTIES command. It returns the number of add-ons BeHappy has.
+<br><br><tt>
+$ <b>hey BeHappy count Add-ons</b><br>
+Reply BMessage(B_REPLY):<br>
+   "result" (B_INT32_TYPE) : 4 (0x00000004)<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000) <br>
+</tt><br>
+Then, the 'Add-on' property returns the name of a particular add-on. It supports the B_INDEX_SPECIFIER specifier, and the B_GET_PROPERTY command.
+<br><br><tt>
+$ <b>hey BeHappy get Add-on 3</b><br>
+Reply BMessage(B_REPLY):<br>
+   "result" (B_STRING_TYPE) : "OpenGL specs"<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+</tt>
+
+<hr><a name="Book property"><h2>The 'Book' property</h2></a>
+This is a window property, with the name of the currently opened book. It supports the B_DIRECT_SPECIFIER specifier, and the B_GET_PROPERTY and B_SET_PROPERTY commands.
+<br><br><tt>
+$ <b>hey BeHappy get Book of Window 0</b><br>
+Reply BMessage(B_REPLY):<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+   "result" (B_STRING_TYPE) : "Be Book"<br>
+$ <b>hey BeHappy set Book of Window 0 to "BeHappy Documentation"</b><br>
+Reply BMessage(B_REPLY):<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+</tt><br>
+The B_SET_PROPERTY command will return the B_BAD_INDEX error if the book isn't found.
+
+<hr><a name="Index property"><h2>The 'Index' property</h2></a>
+This window property is the name of the currently selected index, in the top menu field. It supports the B_DIRECT_SPECIFIER specifier, and the B_GET_PROPERTY and B_SET_PROPERTY commands.
+<br><br><tt>
+$ <b>hey BeHappy get Index of Window 0</b><br>
+Reply BMessage(B_REPLY):<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+   "result" (B_STRING_TYPE) : "Summary"<br>
+$ <b>hey BeHappy set Index of Window 0 to "Topics"</b><br>
+Reply BMessage(B_REPLY):<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+</tt><br>
+The B_SET_PROPERTY command will return the B_BAD_INDEX error if the index isn't found.
+
+<hr><a name="Topic property"><h2>The 'Topic' property</h2></a>
+This window property is the name of the currently selected link, in the list below the menu field. If no topic is selected, this property is "". It supports the B_DIRECT_SPECIFIER specifier, and the B_GET_PROPERTY and B_SET_PROPERTY commands.
+
+<br><br><tt>
+$ <b>hey BeHappy get Topic of Window 0</b><br>
+Reply BMessage(B_REPLY):<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+   "result" (B_STRING_TYPE) : ""<br>
+$ <b>hey BeHappy set Topic of Window 0 to "Parser"</b><br>
+Reply BMessage(B_REPLY):<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+</tt><br>
+The B_SET_PROPERTY command will return the B_BAD_INDEX error if the link isn't found.
+
+<hr><a name="FatherTopic property"><h2>The 'FatherTopic' property</h2></a>
+This property is like 'Topic', but can be more useful with an index that creates two lists in the BeHappy window. This topic is the 'father' topic, that means the topic selected in the upper list.
+
+<hr><a name="ChildTopic property"><h2>The 'ChildTopic' property</h2></a>
+As for 'FatherTopic', this property is like 'Topic', but can be more useful with two lists in the BeHappy window. This topic is the 'child' topic, that means the topic selected in the lower list. You should use this propery after 'FatherTopic'.
+
+<hr><a name="Other properties"><h2>The other properties</h2></a>
+All the other window properties are available, which lets you do useful stuff...
+
+<br><br><tt>
+$ <b>hey BeHappy set Title of Window 0 to "Stupid Window"</b><br>
+Reply BMessage(B_REPLY):<br>
+   "error" (B_INT32_TYPE) : 0 (0x00000000)<br>
+</tt><br><br>
+
+Thank you to Attila Mezei for his <i>hey</i> tool.
+
+<br>
+<br>
+<center>Next: <a href="53HappyCommander.html">The HappyCommander class</a></center><hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

@@ -1,0 +1,27 @@
+BeHappy  for BeOS Intel
+version 1.06 - Development kit
+by Sylvain Tertois
+
+Thank you for downloading this archive! To read the documentation, just lanch BeHappy, open the 'BeHappy Documentation' book, and update the book. If everything works well, you should find the documentation of this kit with BeHappy's doc.
+
+You can modify and use the source code in this archive to build your own add-ons.
+
+Compatibility:
+This version is compatible with BeHappy 0.05 (BETA-3) up to 1.06.
+Scripting will only work with version 1.02 (and higher)
+
+History:
+version 1.06:
+bug corrections. I forgot the HappyTest.a file, and I corrected some link errors in the localisation system.
+
+version 1.04:
+Added the localisation system. Added the documentation for the two more scripting properties, FatherTopic and ChildTopic. Updated the BeHappyCommander class to handle these properties.
+
+version 1.03:
+Added the HappyTest.a file, which was missing in the version 1.02 release.
+
+version 1.02:
+Added the HappyCommander class, to show how to use scripting with BeHappy 1.02.
+
+You can copy and distribute BeHappy as you want, as long as the original archive remains unchanged. In no event shall I be held liable for any damages arising from the use of this software.
+Be and BeOs are registered trademarks of Be, Inc. All other trademarks mentioned belong to their respective owners. Thank you for your attention. Dismissed.

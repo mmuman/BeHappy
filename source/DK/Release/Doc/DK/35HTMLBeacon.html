@@ -1,0 +1,87 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!class><!DK>
+<a href="31Classes.html"><center>The Classes</center></a><hr>
+<a name="HTMLBeacon"><h1>HTMLBeacon</h1></a>
+<p>Derived from: none
+<p>Declared in: HTMLFile.h
+<p>HTMLBeacon represents particular strings to search in an html file. Use them with <a href="34HTMLFile.html">HTMLFile</a>.
+
+<hr>
+
+<h2><font size=6>C</font>onstructor and <font size=6>D</font>estructor</h2>
+<p><h3><a name="HTMLBeacon()">HTMLBeacon()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <FONT  color=000022 size=+1><b><tt>HTMLBeacon(</tt></b></font><tt>const char</tt> *<font  color=991122 face=HELVETICA><i>stringToFind</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+
+  <tr><td> 
+  <FONT  color=000022 size=+1><b><tt>HTMLBeacon(</tt></b></font><tt>const char</tt> *<font  color=991122 face=HELVETICA><i>string1</i></font>, <tt>const char</tt> *<font  color=991122 face=HELVETICA><i>string2</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+</table></table>
+
+<p>Creates a new HTMLBeacon. The first version creates a one-string beacon. <font  color=991122 face=HELVETICA><i>stringToFind</i></font> will be searched in the html file, and if it is found, the word just after will be stored. The second version creates a two-string beacon. When BeHappy finds <font  color=991122 face=HELVETICA><i>string1</i></font>, it will look for <font  color=991122 face=HELVETICA><i>string2</i></font> and store the text between the two of them.
+<p>A few remarks:
+<ul><li>The strings are case-insensitive, and spaces and tags in the html file are ignored. So if <font  color=991122 face=HELVETICA><i>stringToFind</i></font><tt>="hello"</tt>, both <tt>"hello"</tt> and <tt>"H e &lt;b&gt;lLo&lt;/b&gt;"</tt> will be found.
+<li>If you put a space in <font  color=991122 face=HELVETICA><i>stringToFind</i></font>, there must be one in the html file. So if <font  color=991122 face=HELVETICA><i>stringToFind</i></font><tt>="hel lo"</tt>, <tt>"H EL LO"</tt> will be found, but <tt>"h ello"</tt> won't.
+<li>Tags between <font  color=991122 face=HELVETICA><i>string1</i></font> and <font  color=991122 face=HELVETICA><i>string2</i></font> won't be recognised. So if there's a link or a label between these two strings, it will be ignored. The contents of the tags won't be stored. (ie if between <font  color=991122 face=HELVETICA><i>string1</i></font> and <font  color=991122 face=HELVETICA><i>string2</i></font> there is <tt>"He&lt;b&gt;llo&lt;/b&gt;"</tt>, the found string will just be <tt>"Hello"</tt>.
+<li>If the tags are ignored between <font  color=991122 face=HELVETICA><i>string1</i></font> and <font  color=991122 face=HELVETICA><i>string2</i></font>, you may ask yourself how you can do to find what's in a specific tag... In fact it is simple: just put an '<tt>&lt;</tt>' at the end of <font  color=991122 face=HELVETICA><i>string1</i></font>, and the caracters just after won't be recognised as a tag, and won't be ignored. As an example, all the html files in the BeHappy Documentation have a <tt>&lt;!DK&gt;&lt;!</tt><i><b>type</b></i><tt>&gt;&lt;!DK&gt;</tt> string at the beginning, where <i><b>type</b></i> is <tt>topic</tt> for a topic file, and <tt>class</tt> for a class description. To find the <i><b>type</b></i>, I created a beacon with <font  color=991122 face=HELVETICA><i>string1</i></font><tt>="&lt;!DK&gt;&lt;!"</tt> and <font  color=991122 face=HELVETICA><i>string2</i></font><tt>="&gt;&lt;!DK&gt;"</tt>. The found string will be <tt>"no"</tt>, <tt>"topic"</tt> or <tt>"class"</tt>.
+<li>If you do a one-string beacon, don't forget that BeHappy will extract the word just after <font  color=991122 face=HELVETICA><i>stringToFind</i></font>. So if you have a link or a label just after <font  color=991122 face=HELVETICA><i>stringToFind</i></font>, it won't be recognised as such. That's why in the <a href="41Sample.html">sample add-on</a>, to search the <tt>&lt;!start&gt;</tt> and <tt>&lt;!stop&gt;</tt> tags, I use one-string beacons with the strings <tt>&lt;start</tt> and <tt>&lt;!stop</tt>. In both cases, the <a href="#FoundString()">FoundString()</a> will be <tt>&gt;</tt>, and if there is a link just after, it will be recognised.
+</ul>
+
+<p><hr>
+<h2><font size=6>M</font>ember <font size=6>F</font>unctions</h2>
+
+<p>
+<h3><a name="Found()">Found()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>bool</tt> <font  color=000022 size=+1><b><tt>Found()</tt></b></font> 
+  <p>
+</table></table>
+
+<p>Return <tt>true</tt> if the beacon has been found. The beacon must have been added to a file (see <a href="34HTMLFile.html#AddBeacon()">HTMLFile::AddBeacon()</a>), and the file must have been searched (see <a href="34HTMLFile.html#Search()">HTMLFile::Search()</a>).
+
+<p><hr>
+<h3><a name="FoundString()">FoundString()</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const char</tt> *<font  color=000022 size=+1><b><tt>FoundString()</tt></b></font> 
+  <p>
+</table></table>
+
+<p>Return the string found, if the beacon has been found. The beacon must have been added to a file (see <a href="34HTMLFile.html#AddBeacon()">HTMLFile::AddBeacon()</a>), and the file must have been searched (see <a href="34HTMLFile.html#Search()">HTMLFile::Search()</a>).
+<p>If the beacon is a one-string beacon, the found string is just the word after <font  color=991122 face=HELVETICA><i>stringToFind</i></font>, and if it is a two-string beacon, the found string is all the text between <font  color=991122 face=HELVETICA><i>string1</i></font> and <font  color=991122 face=HELVETICA><i>string2</i></font> (with the tags removed).
+<hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

@@ -1,0 +1,107 @@
+<html><head><title>BeHappy Development kit</title></head>
+<body bgcolor=#c0c0c0>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+<hr>
+<!DK><!class><!DK>
+<a href="31Classes.html"><center>The Classes</center></a><hr>
+<a name="Global variables, Constants, and Defined Types"><h1>Global variables, Constants, and Defined Types</h1></a>
+<p>Defined in: BHAdd-ons.h
+<p>This file describes the global variables, constants, and the defined types used by the add-on.
+
+<p><hr>
+
+<h2><font size=6>G</font>lobal <font size=6>V</font>ariables</h2>
+
+<p><h3><a name="BHVersion">BHVersion</a>, <a name="BHVLastCompatible">BHVLastCompatible</a></h3>
+<i>Remark:</i> This variable is already defined in the Add-on.cpp file. Just dont delete that line, and don't modify it.
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const uint16</tt> <FONT  color=000022 size=+1><b><tt>BHVersion</tt></b></font>
+  <p>
+
+  <tr><td> 
+  <tt>const uint16</tt> <FONT  color=000022 size=+1><b><tt>BHVLastCompatible</tt></b></font>
+  <p>
+</table></table>
+
+<p><tt>BHVersion</tt> is the version number of the development kit. The high byte is the major version number (ex. 1) and the low byte is the minor version number(ex. 0 ->1.00).
+<p><tt>BHVLastCompatible</tt> is the lowest version number the add-on is compatible with.
+<p>These two variables lets BeHappy know if it's compatible with the add-on or not.
+
+<p><hr>
+<h3><a name="projectName">projectName</a></h3>
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <tt>const char</tt> *<FONT  color=000022 size=+1><b><tt>projectName</tt></b></font>
+  <p>
+
+</table></table>
+
+This string is the name of the project. Modify the line that defines it in Add-On.cpp to put the name of your add-on in that variable.
+
+<p><hr>
+<h2><font size=6>G</font>lobal <font size=6>F</font>unctions</h2>
+
+<p>
+<h3><a name="InstantiateProject">InstantiateProject()</a></h3>
+<i>Remark:</i> The default implementation of this function in Add-On.cpp should be enough. You don't have to modify it.
+
+<Table> 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<tr> 
+<td>&nbsp;&nbsp; 
+<td><p>
+  <Table cellpadding =3 bgcolor =eeeeee> 
+
+  <tr><td> 
+  <a href="32HTMLProject.html">HTMLProject</a> *<font  color=000022 size=+1><b><tt>InstantiateProject(</tt></b></font>BMessage *<font  color=991122 face=HELVETICA><i>archive</i></font><font  color=000022 size=+1><b><tt>)</tt></b></font>
+  <p>
+</table></table>
+
+<p>Called by BeHappy to create a new instance of the project. If <font  color=991122 face=HELVETICA><i>archive</i></font> is <tt>NULL</tt>, create an empty project. And if it isn't, rebuild all the project from the given <font  color=991122 face=HELVETICA><i>archive</i></font>.
+
+<p><hr>
+<h2><font size=6>C</font>onstants</h2>
+
+<p><a name="Index Types"><h3>Index types</h3></a>
+<p>
+<table border=1>
+<tr>
+<td><b>Constant</b>
+<td><b>Requires</b>
+<td><b>Description</b>
+<tr>
+<td>BW_SECONDLIST<td><td>Divides the list in two. The first one only show the HappyLinks who have children, and the second one only those who haven't. So the second list show the last "generation", and the first one the others. I think the best thing to understand exactly how the lists are organised is to try this option.
+<tr>
+<td>BW_NEXTBUTTON<td>BW_SECONDLIST<td>Adds a 'next' button under the lists. When the user clicks on this button, BeHappy will search the next occurence of the selected item in the <b>first</b> list. (Used in the 'By Inheritance' index of the BeBook add-on)
+<tr>
+<td>BW_SEARCHTXTV<td>no BW_SECONDLIST<td>Adds a BTextView to search the list.
+<tr>
+<td>BW_CONTAINS<td>BW_SEARCHTXTV<td>Adds a 'contains' checkbox for the search option.
+<tr>
+<td>BW_INFOTEXT<td><td>Displays the <b>info</b> string of the <a href="33HappyLink.html">HappyLink</a>s at the bottom.
+</table>
+
+<p>Use a combination of these constants in <a href="32HTMLProject.html#GiveConfig()">HTMLProject::GiveConfig()</a><hr>
+<h6 align="center"><center><a href="../4DK.html">Return to DK Summary</a></center></h6>
+</body></html>

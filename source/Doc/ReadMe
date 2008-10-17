@@ -1,0 +1,96 @@
+BeHappy for BeOS
+version 1.06d
+by Sylvain Tertois
+
+Thank you for downloading this application! Please try this program and tell me what you think of it, what you'd like to find in it, and of course your bug reports. (behappy@becoz.org).
+
+Any updates and information will be available on my web page: 
+http://www.becoz.org/beos
+You'll also find there more add-ons for BeHappy, such as the OpenGL 1.1 specification, and Frank B. Brokken's C++ Annotations.
+
+Thanks to Everyone who sent me an e-mail, and especially:
+* Andreas Drewke for the ppc port
+* Alain Laporte / BeTroll for support, bug-tracking and his help for the french version
+* Axel Doerfler for his bug report and sugestions
+* Ove Peter for his sugestions
+* Stephan Aßmus for his support and his icon
+* Fernando Oliveira for the portuguese translation
+* Ted Leeuwesteijn for the Dutch translation
+* Viktor Varga for the Hungarian translation
+* Koichi Kimura for the Japanese translation
+* Axel Doerfler for his suggestions
+* Christian Corona for the german version
+* Gregor B. Rosenauer who wrote DarkSite. I used this really good editor to write the HTML documentation.
+* David Feugey, who wrote a nice article in a french magazine (Login) about BeHappy
+* Oliver Kohl (sorry I haven't found all the memory leaks yet... but I've found some!)
+* Seth R. Flaxman
+
+Compatibility:
+This version is compatible with the following versions of the development kit:
+1.00 - 1.05
+0.05 (BETA-3)
+
+History:
+version 1.06d:
+PPC version! Thanks to Andreas Drewke for his help.
+
+version 1.06b:
+Hungarian and Japanese translations added.
+
+version 1.06:
+Dutch and Portuguese translations added. Thanks to those who send me localization files for their language!
+
+version 1.05:
+In the BeBook the methods inside a class are now sorted. That whould make a search for a BView method easier.
+There are now limits for the two mover bars. You can't put them out of the window any more ;-)
+BeOS' shutdown procedures isn't interrupted if BeHappy is still running at the time anymore.
+
+version 1.04:
+Localisable version. You can add a new language by editing the BeHappy.loc file. The add-ons can also be localised, in the *.loc files in the Add-ons folder.
+BeBook add-on corrected. All the structures and 'B_' constants are here again. Works with both the old and the new BeBook. 
+Supports several BeBooks on your system. When you update the indexes, you'll be able to choose which one to use.
+Corrected the 'By Inheritance' index in the BeBook
+All the pages about the BView are regrouped into one 'BView' entry.
+The sub-sections in the 'By Kit''s Kits are sorted. This means that the class names in the kits are now sorted, but also that some topics are now at the end of the lists. Anyway I think we look more frequently for a class than for a topic, don't we?
+The Annotated BeBook is supported (offline version only), but the notes aren't indexed. The offline version doesn't has any yet anyway.
+I've added two properties in the scripting support, to be able to select specific topics using both lists in the BeHappy window. (used by the BeIDE add-on)
+Added a menu to access to the BeHappy web site, with a few interesting things such as an automatic update checker.
+
+version 1.03:
+BeBook add-on corrected. The new BeBook is now correctly handled.
+I replaced my ugly home-made icon with the much nicer one done by Stephan Aßmus.
+Added the release notes to the index
+
+version 1.02:
+Supports any font size in the menu bar.
+BeBook add-on again enhanced. The 'topics' section is now usable, a lot of useless links have been removed.
+Scripting support (lots of work here!)
+Compatible with BeOS R4.5 again (version 1.01 wasn't anymore)
+
+version 1.01:
+Compatible with BeOS R5.
+BeBook add-on corrected.
+
+version 1.00:
+BeHappy now checks any modification to its Add-Ons folder (the 'Book' menu is updated as soon as you add or remove an add-on)
+The links are now resolved. You can put links in the Add-Ons folder
+When you select a link in a list, and then use the html view's scroll bars, you can return to the link's text by clicking on it, even if it's still selected. (in the older versions, clicking on it didn't have any effects).
+Corrected a bug with the info string and the 'contains' box. The info is now displayed when the 'contains' box is selected, and BeHappy now longer crashes with the 'contains' option.
+Corrected a bug in the lists with a 'search' option: sometimes when the user selected a link with the mouse, BeHappy selected another.
+
+version 0.05 (BETA-3):
+Add-on support.
+A few bug corrections in the BeBook add-on.
+More preferences saved (ex.: windows and 'movers' positions)
+A few other things 
+
+version 0.03 (BETA-2):
+BFileGameSound no longer appears in the main index (with the august 31th update of the Be Book).
+Background Images and BDeskbar added in the index
+Tracker, UserInterface Guidelines, and Screen savers are now classified as "other" (instead of being with the other kits)
+The 'B_' constants, the defined types and the global variables are in the "topics index". I don't really know if I should let them here, put them in the "functions index" or in another index... (and now all the 'B_' constants are here)
+I corrected some bugs in the parser, and a huge memory leak. (There's still some leaks, but it's very painful to debug ;-)
+A new bug: in the 'by inheritance' list, some classes are classified as being inherited from themselves. I'll correct this stupid bug in the next release.
+
+You can copy and distribute BeHappy as you want, as long as the original archive remains unchanged. In no event shall I be held liable for any damages arising from the use of this software.
+Be and BeOs are registered trademarks of Be, Inc. All other trademarks mentioned belong to their respective owners. Thank you for your attention. Dismissed.

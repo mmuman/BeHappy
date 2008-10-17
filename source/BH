@@ -1,0 +1,16 @@
+<html><head><title>BeHappy about screen</title></head>
+<body>
+<br>
+<h1 align="center">Welcome to</h1>
+<center><img src="BH.jpeg"></center><br>
+<h4 align="center">Version 1.06</h4>
+<br>
+<center>Done by <a href="mailto:behappy@becoz.org">Sylvain Tertois</a><br>
+This program is mailware! If you like it, please send me an email!<br>
+Updates and add-ons can be found on the <a href="http://www.becoz.org/beos/happy" target="_blank">BeHappy web page</a><br>
+To open a book, go to the <b>Book</b> menu up there.
+<br>
+This program uses <a href="Netpositive:About.html">NetPositive2</a>, written by Scott Barta, Peter Barrett,Hirochi Lockheimer, Trevor F. Smith, and Kenny Carruthers<br>
+</center>
+</body>
+</html>

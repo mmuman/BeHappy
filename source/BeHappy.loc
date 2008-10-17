@@ -1,0 +1,243 @@
+# BeHappy
+# © 1999-2000 by Sylvain Tertois
+# localisation file
+
+# the syntax of this file is very easy to understand
+# all the empty lines, and the lines beginning with a '#' will be ignored
+
+# first here is the list of the languages. The first language must be between brackets
+[English]
+Français
+Deutsch
+Nederlands
+Português
+Magyar
+Japanese
+
+# then the string to be translated is put between brackets, and the translations follow
+# they must be in the same order than the languages list.
+
+# menus
+[File]
+Fichier
+Datei
+Bestand
+Arquivo
+Fájl
+ファイル
+
+[Spawn new window]
+Créer une nouvelle fenêtre
+Neues Fenster öffnen
+Open een nieuw venster
+Criar uma nova janela
+Új ablak nyitása
+新規ウィンドウ
+
+[About BeHappy]
+A propos de BeHappy
+Über BeHappy
+Over BeHappy
+Sobre o BeHappy
+A BeHappy-röl
+BeHappy について
+
+[Quit]
+Quitter
+Beenden
+Beeindigen
+Sair
+Kilépés
+終了
+
+[Book]
+Livre
+Buch
+Boek
+Livro
+Könyv
+図書
+
+[Action]
+Action
+Bearbeiten
+Aktie
+Ação
+Akció
+アクション
+
+[Update...]
+Mettre à jour...
+Aktualisieren...
+Aktualiseren
+Atualizar
+Frissítés
+アップデート
+
+[About add-on]
+A propos de l'add-on
+Über Zusatzmodul
+Over add-on
+Sobre o Add-On
+Az Add-On-okról
+Add-On 情報
+
+[Language]
+Langue
+Sprache
+Taal
+Idioma
+Nyelv
+言語設定
+
+[Web site]
+Site web
+Internetseite
+Internet
+Web Site
+Web oldal
+ウェブサイト
+
+[Homepage]
+Page principale
+Homepage
+Hoofdpagina
+HomePage
+Honlap
+ホームページ
+
+[Register online (free!)]
+S'enregistrer en ligne (gratuit!)
+Register online (free!)
+Registreer via internet
+Registre online (Grátis)
+On-line regisztráció (ingyenes!)
+オンライン登録(無償)
+
+[Check for update]
+Chercher une mise à jour
+Check for update
+Kijk voor nieuwere versie
+Verificar por Atualização
+Frissítés keresése
+アップデートの確認
+
+[Bugs and Suggestions]
+Bugs et suggestions (anglais)
+Bugs and Suggestions
+Bugs en Suggesties
+Bugs e Sugestões
+Hibák és javaslatok
+フィードバック
+
+# this is the country code for the html pages on becoz.org. Currently only 'fr' and 'en' are available
+[en]
+fr
+en
+en
+en
+en
+en
+
+# this one is a bit special, it is the name of the 'about' HTML file
+[BH]
+BH.fr
+BH.de
+BH.nl
+BH.br
+BH.hu
+BH
+
+# several strings used in the main window
+[nothing to choose!]
+rien à choisir!
+Kein Index vorhanden
+Niets te kiezen
+Nada a Escolher
+nincs kiválasztható elem
+選択されていません
+
+[Update]
+Mettre à jour
+Aktualisiere
+Aktualiseer
+Atualizar
+Frissítés: 
+アップデート
+
+[Next]
+Suivant
+Weiter
+Volgende
+Próximo
+Következö
+次へ
+
+[Containing:]
+Contenant:
+Enthält:
+Inhoud
+Conteúdo
+Tartalmazza:
+以下の文字を含む:
+
+# in the window opened when the user updates a book
+[Updating...]
+Mise à jour en cours...
+Aktualisiere...
+Aktualiseren...
+Atualizando...
+Frissítés...
+アップデート中...
+
+[Please give the HTML files path]
+Veuillez donner le chemin vers les fichiers HTML
+Please give the HTML files path*
+Geeft u a.u.b de HTML bestands lokatie
+Por Favor, verifique o caminho dos arquivos HTML
+Kérem adja meg a HTML fájl útvonalát
+HTML ファイルのパスを指定してください
+
+# error messages
+[Error while loading add-on]
+Erreur en chargeant l'add-on
+Fehler beim Laden des Zusatzmoduls
+Fout tijdens laden add-on
+Erro ao carregar o Add-On
+Hiba az Add-On betöltésekor
+読込み中に add-on のエラーが発生しました
+
+[Can't find Add-ons folder]
+Répertoire d'add-ons non trouvé
+Can't find Add-ons folder*
+Kan de add-ons map niet vinden
+A pasta de Add-Ons não foi encontrada
+Nem találom az Add-On könyvtárat
+Add-ons フォルダを見つけることができません。
+
+# these error messages happen when trying to load an add-on
+# BeHappy always put the name of the add-on before these strings
+[isn't compatible with this (old) version of BeHappy. Please download a more recent version of BeHappy.]
+n'est pas compatible avec cette (vieille) version de BeHappy. Veuillez télécharger une verison plus récente.
+isn't compatible with this (old) version of BeHappy. Please download a more recent version of BeHappy.*
+is niet te gebruiken met deze (oude) versie van BeHappy, Haal een recentere versie op.
+não é compatível com esta (velha) versão do BeHappy. Por favor, baixe uma versão mais recente do BeHappy.
+nem kompatibilis ezzel a BeHappy verzióval. Kérem töltsön le újabb BeHappy verziót.
+BeHappy のこの(古い)バージョンと互換性をもちません。BeHappy のより最近のバージョンをダウンロードしてください。
+
+[is too old, and isn't compatible with this version of BeHappy. Please find a more recent version of the add-on.]
+est trop vieux pour cette version de BeHappy. Veuillez chercher une version plus récente de cet add-on.
+is too old, and isn't compatible with this version of BeHappy. Please find a more recent version of the add-on.*
+is te oud en is niet te gebruiken met deze versie van BeHappy Haal een recentere versie op van de add-on.*
+é muito antigo, e não é compativel com esta versão do BeHappy. Por favor, encontre uma versão do add-on mais recente.
+túl régi, és nem kompatibilis a BeHappyjelenlegi verziójával. Kérem töltse le az Add-On újabb változatát.
+古すぎます、BeHappy のこのバージョンと互換性をもちません。Add-on のより最近のバージョンを見つけてください。
+
+[is an invalid BeHappy add-on.]
+n'est pas un add-on BeHappy valide.
+is an invalid BeHappy add-on.*
+is een ongeldige BeHappy add-on
+não é um add-on do BeHappy valido.
+egy érvénytelen BeHappy Add-On.
+無効の BeHappy add-on です。
+
