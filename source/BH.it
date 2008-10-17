@@ -1,0 +1,16 @@
+<html><head><title>A proposito di BeHappy</title></head>
+<body>
+<br>
+<h1 align="center">Benvenuto a</h1>
+<center><img src="BH.jpeg"></center><br>
+<h4 align="center">Versione 1.06</h4>
+<br>
+<center>Realizzato da <a href="mailto:be-happy@becoz.org">Sylvain Tertois</a><br>
+Questo programma &egrave mailware! Se ti piace, per favore mandami un email!<br>
+Updates e add-ons possono essere trovati nella <a href="http://www.becoz.org/beos/proj/behappy" target="_blank">BeHappy web page</a><br>
+Per aprire un libro, vai nel men&ugrave <b>Book</b> l&igrave sopra.
+<br>
+Questo programma usa <a href="Netpositive:About.html">NetPositive2</a>, scritto da Scott Barta, Peter Barrett,Hirochi Lockheimer, Trevor F. Smith, e Kenny Carruthers<br>
+</center>
+</body>
+</html>

@@ -13,6 +13,9 @@ Nederlands
 Português
 Magyar
 Japanese
+Türkçe
+Italiano
+Castellano
 
 # then the string to be translated is put between brackets, and the translations follow
 # they must be in the same order than the languages list.
@@ -25,6 +28,9 @@ Bestand
 Arquivo
 Fájl
 ファイル
+Dosya
+File
+Archivo
 
 [Spawn new window]
 Créer une nouvelle fenêtre
@@ -33,6 +39,9 @@ Open een nieuw venster
 Criar uma nova janela
 Új ablak nyitása
 新規ウィンドウ
+Yeni Pencere aç
+Aprire una nuova finestra
+Nueva ventana
 
 [About BeHappy]
 A propos de BeHappy
@@ -41,6 +50,9 @@ Over BeHappy
 Sobre o BeHappy
 A BeHappy-röl
 BeHappy について
+Be Happy Hakkında
+A proposito di BeHappy
+Acerca de BeHappy
 
 [Quit]
 Quitter
@@ -49,6 +61,9 @@ Beeindigen
 Sair
 Kilépés
 終了
+Çık
+Uscire
+Salir
 
 [Book]
 Livre
@@ -57,6 +72,9 @@ Boek
 Livro
 Könyv
 図書
+Kitap...
+Libro
+Libro
 
 [Action]
 Action
@@ -65,6 +83,9 @@ Aktie
 Ação
 Akció
 アクション
+Değiştir
+Azione
+Acción
 
 [Update...]
 Mettre à jour...
@@ -73,6 +94,9 @@ Aktualiseren
 Atualizar
 Frissítés
 アップデート
+Güncelle
+Aggiornamento...
+Actualizar...
 
 [About add-on]
 A propos de l'add-on
@@ -81,6 +105,9 @@ Over add-on
 Sobre o Add-On
 Az Add-On-okról
 Add-On 情報
+Add-On Hakkında
+A proposito dell'add-on
+Acerca del Add-On
 
 [Language]
 Langue
@@ -89,6 +116,9 @@ Taal
 Idioma
 Nyelv
 言語設定
+Dil
+Lingua
+Idioma
 
 [Web site]
 Site web
@@ -97,6 +127,9 @@ Internet
 Web Site
 Web oldal
 ウェブサイト
+Web Sitesi
+Sito Web
+On-Line
 
 [Homepage]
 Page principale
@@ -105,6 +138,9 @@ Hoofdpagina
 HomePage
 Honlap
 ホームページ
+Homepage
+Homepage
+Página web
 
 [Register online (free!)]
 S'enregistrer en ligne (gratuit!)
@@ -113,6 +149,9 @@ Registreer via internet
 Registre online (Grátis)
 On-line regisztráció (ingyenes!)
 オンライン登録(無償)
+Bedava Yazılımı kayıtlandırın!
+Registrazione online (gratuita!)
+Registrar on-line (gratis)
 
 [Check for update]
 Chercher une mise à jour
@@ -121,6 +160,9 @@ Kijk voor nieuwere versie
 Verificar por Atualização
 Frissítés keresése
 アップデートの確認
+Yazılım Güncellemesi için siteye bak
+Controllo per aggiornamenti
+Buscar actualización
 
 [Bugs and Suggestions]
 Bugs et suggestions (anglais)
@@ -129,10 +171,16 @@ Bugs en Suggesties
 Bugs e Sugestões
 Hibák és javaslatok
 フィードバック
+Hatalar ve İstekler:
+Bugs e suggerimenti
+Errores y sugerencias
 
 # this is the country code for the html pages on becoz.org. Currently only 'fr' and 'en' are available
 [en]
 fr
+en
+en
+en
 en
 en
 en
@@ -147,6 +195,9 @@ BH.nl
 BH.br
 BH.hu
 BH
+BH.tr
+BH.it
+BH.es
 
 # several strings used in the main window
 [nothing to choose!]
@@ -156,6 +207,9 @@ Niets te kiezen
 Nada a Escolher
 nincs kiválasztható elem
 選択されていません
+Endeks yok
+niente da scegliere!
+Nada para seleccionar
 
 [Update]
 Mettre à jour
@@ -164,6 +218,9 @@ Aktualiseer
 Atualizar
 Frissítés: 
 アップデート
+Güncelleniyor
+Aggiornare
+Actualizar
 
 [Next]
 Suivant
@@ -172,6 +229,9 @@ Volgende
 Próximo
 Következö
 次へ
+Sonraki
+Prossimo
+Siguiente
 
 [Containing:]
 Contenant:
@@ -180,6 +240,9 @@ Inhoud
 Conteúdo
 Tartalmazza:
 以下の文字を含む:
+İçeriği:
+Contenente:
+Conteniendo:
 
 # in the window opened when the user updates a book
 [Updating...]
@@ -189,6 +252,9 @@ Aktualiseren...
 Atualizando...
 Frissítés...
 アップデート中...
+Güncelleniyor..
+Updating...
+Actualizando...
 
 [Please give the HTML files path]
 Veuillez donner le chemin vers les fichiers HTML
@@ -197,6 +263,9 @@ Geeft u a.u.b de HTML bestands lokatie
 Por Favor, verifique o caminho dos arquivos HTML
 Kérem adja meg a HTML fájl útvonalát
 HTML ファイルのパスを指定してください
+Lütfen HTML kaynak klasörü seçin
+Per favore inserisci il percorso dei files HTML
+Por favor, verifique la ruta a los archivos HTML
 
 # error messages
 [Error while loading add-on]
@@ -206,6 +275,9 @@ Fout tijdens laden add-on
 Erro ao carregar o Add-On
 Hiba az Add-On betöltésekor
 読込み中に add-on のエラーが発生しました
+Add-On yüklemede hata oluştu
+Errore durante il caricamento dell'add-on
+Error al cargar el add-on
 
 [Can't find Add-ons folder]
 Répertoire d'add-ons non trouvé
@@ -214,6 +286,9 @@ Kan de add-ons map niet vinden
 A pasta de Add-Ons não foi encontrada
 Nem találom az Add-On könyvtárat
 Add-ons フォルダを見つけることができません。
+Add-On Klasörü bulunamıyor
+Non posso trovare la cartella degli Add-ons
+No se pudo encontrar el directorio de los add-ons
 
 # these error messages happen when trying to load an add-on
 # BeHappy always put the name of the add-on before these strings
@@ -224,6 +299,9 @@ is niet te gebruiken met deze (oude) versie van BeHappy, Haal een recentere vers
 não é compatível com esta (velha) versão do BeHappy. Por favor, baixe uma versão mais recente do BeHappy.
 nem kompatibilis ezzel a BeHappy verzióval. Kérem töltsön le újabb BeHappy verziót.
 BeHappy のこの(古い)バージョンと互換性をもちません。BeHappy のより最近のバージョンをダウンロードしてください。
+BeHappy ile bu versiyon uyuşmadı. Lütfen yeni bir BeHappy versyonu indirin!
+non e' compatibile con questa (vecchia) versione di BeHappy. Per favore scarica una versione piu' recente di BeHappy.
+no es compatible con esta (vieja) versión de BeHappy. Descargue una versión de BeHappy más reciente.
 
 [is too old, and isn't compatible with this version of BeHappy. Please find a more recent version of the add-on.]
 est trop vieux pour cette version de BeHappy. Veuillez chercher une version plus récente de cet add-on.
@@ -232,6 +310,9 @@ is te oud en is niet te gebruiken met deze versie van BeHappy Haal een recentere
 é muito antigo, e não é compativel com esta versão do BeHappy. Por favor, encontre uma versão do add-on mais recente.
 túl régi, és nem kompatibilis a BeHappyjelenlegi verziójával. Kérem töltse le az Add-On újabb változatát.
 古すぎます、BeHappy のこのバージョンと互換性をもちません。Add-on のより最近のバージョンを見つけてください。
+BeHappy ile bu versiyon uyuşmadı. Lütfen yeni bir BeHappy versyonu indirin!
+e' troppo vecchio, e non e' compatibile con questa versione di BeHappy. Per favore trova una versione piu' recente dell'add-on.
+es muy antiguo y es incompatible con esta versión de BeHappy. Utilize una versión más reciente de este add-on.
 
 [is an invalid BeHappy add-on.]
 n'est pas un add-on BeHappy valide.
@@ -240,4 +321,7 @@ is een ongeldige BeHappy add-on
 não é um add-on do BeHappy valido.
 egy érvénytelen BeHappy Add-On.
 無効の BeHappy add-on です。
+Geçersiz Add-On
+non e' un valido add-on per BeHappy.
+no es un add-on válido.
 

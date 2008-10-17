@@ -9,6 +9,9 @@ Nederlands
 Português
 Magyar
 Japanese
+Türkçe
+Italiano
+Castellano
 
 # Indexes
 [By Kit]
@@ -18,6 +21,9 @@ Op Kit
 Por Kit
 Kit alapján
 キット
+Kit'lere göre
+Per Kit
+Por Kits
 
 [Other]
 Autres
@@ -26,6 +32,9 @@ Anders
 Outro
 Egyéb
 その他
+Diğeri
+Altro
+Otros
 
 [By Inheritance]
 Par héritage
@@ -34,6 +43,9 @@ op erfenis
 Por Herança
 Kapcsolatok alapján
 継承
+Referans'a göre
+Per Eredità
+Por herencia
 
 [Functions Index]
 Index des fonctions
@@ -42,6 +54,9 @@ Funktie Index
 Índice de Funções
 Funkció alapján
 索引:関数
+Fonksiyonlar Endeksi
+Indice delle Funzioni
+Índice de funciones
 
 [Topics index]
 Index des sujets
@@ -50,6 +65,9 @@ Onderwerp Index
 Índice de Tópicos
 Cím alapján
 索引:話題
+Konu endeksi
+Indice degli Argomenti
+Índice de temas
 
 # update strings
 [In:]
@@ -59,6 +77,9 @@ In:
 em:
 ln:
 In:
+İçindeki yer:
+Sto' analizzando:
+en:
 
 [Parsing]
 Lecture de
@@ -67,6 +88,9 @@ Verwerken
 Leitura de
 Értelmezés
 構文解析
+Meşgul...
+Lettura di
+Analizando
 
 #about
 [BeBook add-on, version %x.%2.2x]
@@ -76,6 +100,9 @@ BeBook add-on versie %x.%2.2x
 Add-On para o BeBook, versão %x.%2.2x
 BeBook add-on, %x.%2.2x verzió
 BeBook add-on, バージョン %x.%2.2x
+BeBook Modülü, versiyon %x.%2.2x
+Add-on per il BeBook, versione %x.%2.2x
+Add-On para BeBook, versión %x.%2.2x
 
 [by Sylvain Tertois]
 par Sylvain Tertois
@@ -84,6 +111,9 @@ door Sylvain Tertois
 por Sylvain Tertois
 Sylvian Tertois-tól
 by Sylvain Tertois
+Sylvain Tertois tarafından
+da Sylvain Tertois
+por Sylvain Tertois
 
 [Send email]
 Envoyer un email
@@ -92,6 +122,9 @@ Stuur Email
 Enviar um Email
 E-mail küldés
 電子メールを送信
+E-Mail gönder
+Inviare una email
+Enviar un email
 
 [OK]
 OK
@@ -100,6 +133,9 @@ OK
 Ok
 Ok
 はい
+Tamam
+OK
+Ok
 
 #path selection
 [BeBook Path]
@@ -110,6 +146,9 @@ BeBook Lokatie
 Caminho do BeBook
 BeBook elérési út
 BeBookへのパス
+BeBook kaynağı
+Percorso del BeBook
+Ruta al BeBook
 
 [Please Select the path to use for the Be Book:]
 Veuillez choisir le chemin à utiliser pour le Be Book:
@@ -118,6 +157,9 @@ Selecteert u a.u.b. de lokatie voor het BeBook:
 Por favor, selecione o caminho para o uso do BeBook:
 Kérem a BeBook elérési útvonalát:
 BeBookのために使用するパスを選択してください:
+BeBook HTML Kaynağını gösterin:
+Per favore selezionare il percorso da usare per il Be Book:
+Por favor, seleccione una ruta al BeBook:
 
 [Set Manually]
 Spécifier à la main
@@ -126,3 +168,7 @@ Handmatig instellen
 Especificar Manualmente
 Kézi beállítás
 手動で設定します
+Manüel ayarlayın
+Imposta manualmente
+Especificar manualmente
+

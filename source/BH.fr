@@ -5,11 +5,11 @@
 <center><img src="BH.jpeg"></center><br>
 <h4 align="center">Version 1.06</h4>
 <br>
-<center>Ecrit par <a href="mailto:behappy@becoz.org">Sylvain Tertois</a><br>
+<center>Ecrit par <a href="mailto:be-happy@becoz.org">Sylvain Tertois</a><br>
 Ce programme est "mailware"! Si vous l'aimez, envoyez-moi un mail. 
 Merci!<br>
 Des add-ons suppl&eacute;mentaires et les mises &agrave; jour sont 
-disponibles sur <a href="http://www.becoz.org/beos/happy" target="_blank">mon site web</a>.<br>
+disponibles sur <a href="http://www.becoz.org/beos/proj/behappy" target="_blank">mon site web</a>.<br>
 Pour ouvrir un livre, allez dans le menu "livre" ci-dessus.
 <br>
 Version traduite en fran&ccedil;ais par Sylvain Tertois, documentation traduite par Alain Laporte.

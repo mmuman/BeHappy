@@ -1,12 +1,9 @@
 BeHappy for BeOS
-version 1.06d
-by Sylvain Tertois
+version 1.06f
 
-Thank you for downloading this application! Please try this program and tell me what you think of it, what you'd like to find in it, and of course your bug reports. (behappy@becoz.org).
-
-Any updates and information will be available on my web page: 
-http://www.becoz.org/beos
-You'll also find there more add-ons for BeHappy, such as the OpenGL 1.1 specification, and Frank B. Brokken's C++ Annotations.
+BeHappy is now under a MIT license, and hosted at OSDrawet.net
+Find out source code, send comments or bug reports here:
+http://dev.osdrawer.net/projects/show/behappy
 
 Thanks to Everyone who sent me an e-mail, and especially:
 * Andreas Drewke for the ppc port
@@ -18,12 +15,15 @@ Thanks to Everyone who sent me an e-mail, and especially:
 * Ted Leeuwesteijn for the Dutch translation
 * Viktor Varga for the Hungarian translation
 * Koichi Kimura for the Japanese translation
+* Atilla Öztürk for the Turkish translation
+* Mattia Tristo for the Italian translation
 * Axel Doerfler for his suggestions
 * Christian Corona for the german version
 * Gregor B. Rosenauer who wrote DarkSite. I used this really good editor to write the HTML documentation.
 * David Feugey, who wrote a nice article in a french magazine (Login) about BeHappy
 * Oliver Kohl (sorry I haven't found all the memory leaks yet... but I've found some!)
 * Seth R. Flaxman
+* Oscar Lesta (BiPolar) for the Spanish translation
 
 Compatibility:
 This version is compatible with the following versions of the development kit:
@@ -31,6 +31,12 @@ This version is compatible with the following versions of the development kit:
 0.05 (BETA-3)
 
 History:
+version 1.06f:
+Spanish translation added
+
+version 1.06e:
+Turkish and Italian translations added
+
 version 1.06d:
 PPC version! Thanks to Andreas Drewke for his help.
 
