@@ -26,35 +26,26 @@
 #include <string.h>
 #include <NetPositive.h>
 
+//#define TRACE(a) printf a
+#define TRACE(a) do {} while (0)
 
 NetView::NetView(BRect frame,const char *url)
 	: BView(frame,NULL,B_FOLLOW_ALL,B_WILL_DRAW)
 {
-	BShelf *myShelf= new BShelf(this,false);
-	
-	// chargement du replicant de Netpositive
-	{
-		app_info meInfo;
-		be_app->GetAppInfo(&meInfo);
-		BFile meFile(&meInfo.ref,B_READ_ONLY);
-		BResources meRessource(&meFile);
-		
-		size_t flatLength;
-		char *flat = (char*)meRessource.LoadResource(B_RAW_TYPE,(int32)0,&flatLength);
-		if (flat==NULL)
-			goto error;		// oui je sais, il y en a qui aiment pas... n'empêche que je trouve ça plus élégant, na!
-		
-		BMessage archive;
-		if (archive.Unflatten(flat) != B_OK)
-			goto error;
-		
-		if ((archive.ReplaceRect("_frame",Bounds()) != B_OK) ||
-			(archive.ReplaceString("url",url) != B_OK))
-			goto error;
-			
-		myShelf->AddReplicant(&archive,BPoint(0,0));
-	}
-	
+	TRACE(("NetView::%s(%s)\n", __FUNCTION__, url));
+	fShelf = new BShelf(this,false);
+
+	status_t err;
+	// try NetSurf first
+	err = LoadReplicant(url, 1);
+	TRACE(("NetView::%s: %s\n", __FUNCTION__, strerror(err)));
+	// fall back to NetPositive
+	if (err < B_OK)
+		err = LoadReplicant(url, 0);
+	TRACE(("NetView::%s: %s\n", __FUNCTION__, strerror(err)));
+	if (err < B_OK)
+		goto error;		// oui je sais, il y en a qui aiment pas... n'empêche que je trouve ça plus élégant, na!
+
 	// petits réglages sur la nouvelle vue NetPositive
 	{
 		BView *netpositive=ChildAt(0);
@@ -80,6 +71,39 @@ NetView::NetView(BRect frame,const char *url)
 
 NetView::~NetView()
 {
+}
+
+status_t NetView::LoadReplicant(const char *url, int32 resource)
+{
+	TRACE(("NetView::%s(%s, %ld)\n", __FUNCTION__, url, resource));
+	// chargement du replicant de Netpositive ou NetSurf
+	app_info meInfo;
+	be_app->GetAppInfo(&meInfo);
+	BFile meFile(&meInfo.ref,B_READ_ONLY);
+	BResources meRessource(&meFile);
+	status_t err;
+	
+	size_t flatLength;
+	char *flat = (char*)meRessource.LoadResource(B_RAW_TYPE,resource,&flatLength);
+	if (flat==NULL)
+		return B_ERROR;
+	
+	BMessage archive;
+	if (archive.Unflatten(flat) != B_OK)
+		return B_ERROR;
+	
+	if ((archive.ReplaceRect("_frame",Bounds()) != B_OK) ||
+		(archive.ReplaceString("url",url) != B_OK))
+		return B_ERROR;
+
+	err = fShelf->AddReplicant(&archive,BPoint(0,0));
+	if (err < B_OK)
+		return err;
+
+	BView *netpositive=ChildAt(0);
+	if (netpositive==NULL)
+		return ENOENT;
+	return B_OK;
 }
 
 void NetView::NewUrl(const char *path)
