@@ -1,0 +1,15 @@
+
+resource(1) #'RAWT' archive("application/x-vnd.NetSurf", 'ARCV') NSBaseView {
+	"version" = 2,
+	"url" = "",
+	"openAsText" = false,
+	"encoding" = 14,
+	"_name" = "NetSurf",
+	"_frame" = rect { 0.00000, 20.0000, 384.000, 246.000 },
+	"_resize_mode" = 4660,
+	"_flags" = 603979776,
+	"be:actions" = 1145328205,
+	"buttons" = 1,
+	"_drop_point_" = point { 509.000, 322.000 },
+	"_drop_offset_" = point { 4.00000, 221.000 }
+};
