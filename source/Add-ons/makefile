@@ -1,4 +1,4 @@
-SUBDIRS= 
+SUBDIRS= Man
 SUBMAKEFILES=makefile.bebook makefile.bhdoc
 
 default all clean:
