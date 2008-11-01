@@ -22,7 +22,10 @@ class HTMLProject;
 class BrowseView;
 class Mover;
 class AddOnPrefFile;
+class BMenu;
 class BMenuBar;
+class BMenuField;
+class BMenuItem;
 
 #include <String.h>
 #include <Path.h>

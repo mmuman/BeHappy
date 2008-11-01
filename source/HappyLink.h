@@ -13,6 +13,7 @@
 class HTMLProject;
 class HTMLLabel;
 class BDataIO;
+class BList;
 
 typedef enum { SORT_ALL, SORT_PARENTS_ONLY, SORT_KIDS_ONLY } SortType;
 

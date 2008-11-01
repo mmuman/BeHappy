@@ -16,6 +16,7 @@
  #define LANGUAGEHANDLER_H
  
  #include <Handler.h>
+class BEntry;
  
  class LanguageHandler : public BHandler
  {

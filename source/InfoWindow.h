@@ -11,6 +11,8 @@
 
 #include <Window.h>
 class MainWindow;
+class BStringView;
+class BStatusBar;
 
 class InfoWindow : public BWindow
 {

@@ -20,6 +20,8 @@
 class LanguageHandler;
 class HTMLProject;
 class BMessageRunner;
+class BDirectory;
+class BPath;
 class WindowMonitor;
 
 class BeHappy : public BApplication

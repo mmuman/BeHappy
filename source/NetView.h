@@ -16,6 +16,8 @@
 #define NETVIEW_H
 
 #include <View.h>
+class BTextControl;
+class BShelf;
 
 class NetView : public BView
 {
