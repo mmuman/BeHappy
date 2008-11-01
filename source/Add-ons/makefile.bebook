@@ -3,7 +3,7 @@ default all: _APP_
 
 # make sure _APP_ exists... can't link to BeHappy directly as the engine prepends -l
 _APP_:
-	ln -s $(CURDIR)/../obj.$(CPU)/BeHappy _APP_
+	cd $(CURDIR); ln -s ../obj.$(CPU)/BeHappy _APP_
 
 ## ********************************* ##
 ## ZETA Generic Makefile v3.0        ##
