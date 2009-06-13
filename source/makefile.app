@@ -63,7 +63,7 @@ RSRCS := BeHappy.rsrc
 #Netpositive\ Replicant.rsrc
 
 #	Specify your RDEF files, if any.
-RDEFS := NetPositiveReplicant.rdef NetSurfReplicant.rdef
+RDEFS := NetPositiveReplicant.rdef NetSurfReplicant.rdef BeHappyHVIF.rdef
 
 # @<-src@ 
 #%}
