@@ -4,6 +4,7 @@
 
 #include <Looper.h>
 #include <Locker.h>
+#include <String.h>
 
 class MainWindow;
 class BrowseView;
