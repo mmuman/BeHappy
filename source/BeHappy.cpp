@@ -352,7 +352,7 @@ void BeHappy::SearchAddOns()
 				BNodeInfo myNodeInfo(&myNode);
 				char mimeType[256];
 				myNodeInfo.GetType(mimeType);
-				if (BString("application/x-vnd.Be-elfexecutable") != mimeType)
+				if (!(BMimeType("application/x-vnd.Be-elfexecutable") == mimeType))
 					continue;
 			}
 			
