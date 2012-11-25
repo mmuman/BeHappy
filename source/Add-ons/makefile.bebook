@@ -140,7 +140,7 @@ OBJ_DIR		:=
 TARGET_DIR	:=
 
 #	Specify a directory for the 'install' target.
-INSTALL_DIR	:= /boot/apps/BeHappy
+INSTALL_DIR	:= /boot/apps/BeHappy/Add-ons
  
 #	Specify the name of this makefile.
 #	If you leave this blank, the makefile will not be considered as part of the
