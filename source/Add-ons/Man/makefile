@@ -3,7 +3,7 @@ default all: _APP_
 
 # make sure _APP_ exists... can't link to BeHappy directly as the engine prepends -l
 _APP_:
-	cd $(CURDIR); ln -s ../../obj.$(CPU)/BeHappy _APP_
+	cd $(CURDIR); ln -s ../../$(OBJ_DIR)/BeHappy _APP_
 
 ## BeOS Generic Makefile v2.2 ##
 
@@ -123,7 +123,7 @@ APP_VERSION =
 #	/dev/video/usb when loaded. Default is "misc".
 DRIVER_PATH = 
 
-INSTALL_DIR	:= /boot/apps/BeHappy
+INSTALL_DIR	:= /boot/apps/BeHappy/Add-ons
 
 ## include the makefile-engine
 include $(BUILDHOME)/etc/makefile-engine
