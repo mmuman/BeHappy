@@ -59,11 +59,12 @@ NOTUSED= \
 
 #	specify the resource files to use
 #	full path or a relative path to the resource file can be used.
-RSRCS := BeHappy.rsrc 
+RSRCS :=  
 #Netpositive\ Replicant.rsrc
 
 #	Specify your RDEF files, if any.
-RDEFS := NetPositiveReplicant.rdef NetSurfReplicant.rdef BeHappyHVIF.rdef
+RDEFS := BeHappy.rsrc \
+	NetPositiveReplicant.rdef NetSurfReplicant.rdef BeHappyHVIF.rdef
 
 # @<-src@ 
 #%}
