@@ -1,7 +1,7 @@
 SUBDIRS= Man
 SUBMAKEFILES=makefile.bebook makefile.bhdoc
 
-default all clean:
+default all clean install:
 	for d in $(SUBDIRS); do \
 		make -C $$d $@ || exit 1; \
 	done

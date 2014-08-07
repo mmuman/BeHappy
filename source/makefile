@@ -2,7 +2,7 @@ SUBMAKEFILESPRE=makefile.app
 SUBDIRS= Add-ons
 SUBMAKEFILESPOST=
 
-default all clean:
+default all clean install:
 	for f in $(SUBMAKEFILESPRE); do \
 		make -f $$f $@ || exit 1; \
 	done
