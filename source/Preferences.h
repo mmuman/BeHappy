@@ -23,6 +23,8 @@
 
 #include <SupportKit.h>
 
+class BWindow;
+
 class Preferences
 {
 public:

@@ -773,7 +773,7 @@ void MainWindow::UpdateProject()
 	delete project;
 	instantiate_project InstantiateProject;
 	get_image_symbol(currentProject,"InstantiateProject",B_SYMBOL_TYPE_ANY,(void**)&InstantiateProject);
-	project = (*InstantiateProject)();
+	project = (*InstantiateProject)(NULL);
 	project->SetInfoMessenger(infoMess);
 	
 	// lancement de la mise à jour

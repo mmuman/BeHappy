@@ -88,6 +88,6 @@ private:
 	friend class Tasks;
 };
 
-typedef HTMLProject* (*instantiate_project)(BMessage *archive=NULL);
+typedef HTMLProject* (*instantiate_project)(BMessage *archive/*=NULL*/);
 
 #endif
