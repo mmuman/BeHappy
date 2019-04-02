@@ -311,7 +311,7 @@ void BeHappy::AboutRequested()
 	BAlert *info = new BAlert("BeHappy!",tmp,"Send email","OK");
 	if (info->Go() == 0)
 	{
-		char *argv[2]= { "app", "mailto:sylvain@fairesuivre.fr" };
+		const char *argv[2]= { "app", "mailto:sylvain@fairesuivre.fr" };
 	
 		be_roster->Launch("text/x-email",2,argv);
 	}
